@@ -1,0 +1,15 @@
+pre {
+    white-space: pre-wrap !important;
+    word-break: break-all;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+@media (min-width: 1200px) {
+    .wy-nav-content {
+        max-width: 95%;
+        /* This allows the content to use most of the screen */
+    }
+}
