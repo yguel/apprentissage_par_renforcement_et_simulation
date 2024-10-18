@@ -1,0 +1,20 @@
+# > conda3.12 initialize >
+# !! Contents within this block are managed by 'conda init' !!
+function conda312_init {
+export CONDA312_PREFIX=$HOME/system/python/anaconda/miniconda312
+__conda312_setup="$("${CONDA312_PREFIX}/bin/conda" 'shell.bash' 'hook' 2> /dev/null)"
+export CONDA_PREFIX=$CONDA312_PREFIX
+export ANACONDA_BIN=${CONDA_PREFIX}/bin
+if [ $? -eq 0 ]; then
+    eval "$__conda312_setup"
+else
+    if [ -f "${CONDA_PREFIX}/etc/profile.d/conda.sh" ]; then
+        . "${CONDA_PREFIX}/etc/profile.d/conda.sh"
+    else
+        export PATH="${CONDA_PREFIX}/miniconda312/bin:$PATH"
+    fi
+fi
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/
+unset __conda312_setup
+}
+# < conda3.12 initialize <
