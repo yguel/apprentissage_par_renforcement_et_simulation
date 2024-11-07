@@ -1,12 +1,12 @@
-##########################################################
-Apprentissage par Renforcement et Simulation documentation
-##########################################################
+*******************
+Table des matières
+*******************
 
 
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Table des matières
+   :maxdepth: 3
+   :caption: Apprentissage par Renforcement et Simulation
 
-   l02_gym_with_jupyter_rl_environment/grid_world_experiments_with_gym
-   l02_gym_with_jupyter_rl_environment/install
+   l02_gym_with_jupyter_rl_environment/s01_grid_world_experiments_with_gym
+   l03_ppo_acrobot/s01_ppo_algorithm
