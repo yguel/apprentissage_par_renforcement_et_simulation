@@ -1,0 +1,177 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installer les outils logiciels &mdash; Documentation Apprentissage par Renforcement et Simulation 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=fdcf8bf8" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=05dadb3a"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=30646c52"></script>
+      <script src="../_static/translations.js?v=e6b791cb"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Apprentissage par Renforcement et Simulation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Apprentissage par Renforcement et Simulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="l02s01_grid_world_experiments_with_gym.html">Expérimenter avec un GridWorld</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../l03_deep_q_learning/l03s00_index.html">Tutoriel Deep Q-Learning</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Apprentissage par Renforcement et Simulation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Installer les outils logiciels</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/l02_gym_with_jupyter_rl_environment/l02s02_install.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="installer-les-outils-logiciels">
+<h1>Installer les outils logiciels<a class="headerlink" href="#installer-les-outils-logiciels" title="Lien vers cette rubrique"></a></h1>
+<section id="installer-conda">
+<h2>Installer conda<a class="headerlink" href="#installer-conda" title="Lien vers cette rubrique"></a></h2>
+<p>Télécharger et installer Miniconda :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/system/python/anaconda
+<span class="nb">cd</span><span class="w"> </span>~/system/python/anaconda
+wget<span class="w"> </span>https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh<span class="w"> </span>-O<span class="w"> </span>Miniconda3-latest-2024.09.sh
+bash<span class="w"> </span>Miniconda3-latest-2024.09.sh<span class="w"> </span>-b<span class="w"> </span>-u<span class="w"> </span>-p<span class="w"> </span>miniconda312
+rm<span class="w"> </span>Miniconda3-latest-2024.09.sh
+</pre></div>
+</div>
+<p>Ajouter le bout de code qui suit à votre fichier de configuration du shell <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code>:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Fonction pour lancer facilement conda depuis la console</span><a class="headerlink" href="#id1" title="Lien vers ce code"></a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># &gt; conda3.12 initialize &gt;</span>
+<span class="linenos"> 2</span><span class="c1"># !! Contents within this block are managed by &#39;conda init&#39; !!</span>
+<span class="linenos"> 3</span><span class="k">function</span><span class="w"> </span>conda312_init<span class="w"> </span><span class="o">{</span>
+<span class="linenos"> 4</span><span class="nb">export</span><span class="w"> </span><span class="nv">CONDA312_PREFIX</span><span class="o">=</span><span class="nv">$HOME</span>/system/python/anaconda/miniconda312
+<span class="linenos"> 5</span><span class="nv">__conda312_setup</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CONDA312_PREFIX</span><span class="si">}</span><span class="s2">/bin/conda&quot;</span><span class="w"> </span><span class="s1">&#39;shell.bash&#39;</span><span class="w"> </span><span class="s1">&#39;hook&#39;</span><span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>/dev/null<span class="k">)</span><span class="s2">&quot;</span>
+<span class="linenos"> 6</span><span class="nb">export</span><span class="w"> </span><span class="nv">CONDA_PREFIX</span><span class="o">=</span><span class="nv">$CONDA312_PREFIX</span>
+<span class="linenos"> 7</span><span class="nb">export</span><span class="w"> </span><span class="nv">ANACONDA_BIN</span><span class="o">=</span><span class="si">${</span><span class="nv">CONDA_PREFIX</span><span class="si">}</span>/bin
+<span class="linenos"> 8</span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos"> 9</span><span class="w">    </span><span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$__conda312_setup</span><span class="s2">&quot;</span>
+<span class="linenos">10</span><span class="k">else</span>
+<span class="linenos">11</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CONDA_PREFIX</span><span class="si">}</span><span class="s2">/etc/profile.d/conda.sh&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos">12</span><span class="w">        </span>.<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CONDA_PREFIX</span><span class="si">}</span><span class="s2">/etc/profile.d/conda.sh&quot;</span>
+<span class="linenos">13</span><span class="w">    </span><span class="k">else</span>
+<span class="linenos">14</span><span class="w">        </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CONDA_PREFIX</span><span class="si">}</span><span class="s2">/miniconda312/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<span class="linenos">15</span><span class="w">    </span><span class="k">fi</span>
+<span class="linenos">16</span><span class="k">fi</span>
+<span class="linenos">17</span><span class="c1">#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/</span>
+<span class="linenos">18</span><span class="nb">unset</span><span class="w"> </span>__conda312_setup
+<span class="linenos">19</span><span class="o">}</span>
+<span class="linenos">20</span><span class="c1"># &lt; conda3.12 initialize &lt;</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="installer-openai-gym-gymansium-version-et-jupyter-avec-conda">
+<h2>Installer OpenAI Gym (gymansium version) et Jupyter avec conda<a class="headerlink" href="#installer-openai-gym-gymansium-version-et-jupyter-avec-conda" title="Lien vers cette rubrique"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda312_init
+conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>rltutorials
+conda<span class="w"> </span>activate<span class="w"> </span>rltutorials
+conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>jupyterlab
+pip<span class="w"> </span>install<span class="w"> </span>swig
+pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;gymnasium[all]&quot;</span>
+pip<span class="w"> </span>install<span class="w"> </span>torch
+</pre></div>
+</div>
+</section>
+<section id="tester-l-installation">
+<h2>Tester l’installation<a class="headerlink" href="#tester-l-installation" title="Lien vers cette rubrique"></a></h2>
+<p>En lançant JupyterLab</p>
+<p>Soit dans la même console que celle où vous avez lancé la dernière commande (<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">gym</span></code>):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>lab
+</pre></div>
+</div>
+<p>Soit dans une nouvelle console, lancez:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda312_init
+conda<span class="w"> </span>activate<span class="w"> </span>rltutorials
+jupyter<span class="w"> </span>lab
+</pre></div>
+</div>
+<p>Cela doit ouvrir une nouvelle fenêtre ou un nouvel onglet de navigateur avec JupyterLab, comme sur l’image ci-dessous:</p>
+<a class="reference internal image-reference" href="../_images/jupyterlab.png"><img alt="JupyterLab" class="align-center" src="../_images/jupyterlab.png" style="width: 800px;" />
+</a>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Manuel YGUEL.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

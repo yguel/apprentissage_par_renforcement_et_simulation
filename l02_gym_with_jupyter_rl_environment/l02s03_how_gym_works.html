@@ -1,0 +1,141 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comment gymnasium fonctionne ? &mdash; Documentation Apprentissage par Renforcement et Simulation 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=fdcf8bf8" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=05dadb3a"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=30646c52"></script>
+      <script src="../_static/translations.js?v=e6b791cb"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Apprentissage par Renforcement et Simulation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Apprentissage par Renforcement et Simulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="l02s01_grid_world_experiments_with_gym.html">Expérimenter avec un GridWorld</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../l03_deep_q_learning/l03s00_index.html">Tutoriel Deep Q-Learning</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Apprentissage par Renforcement et Simulation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Comment gymnasium fonctionne ?</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/l02_gym_with_jupyter_rl_environment/l02s03_how_gym_works.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="comment-gymnasium-fonctionne">
+<h1>Comment gymnasium fonctionne ?<a class="headerlink" href="#comment-gymnasium-fonctionne" title="Lien vers cette rubrique"></a></h1>
+<p>Documentation tirée de <a class="reference external" href="https://gymnasium.farama.org/introduction/basic_usage/">gymnasium</a>.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/AE_loop.png"><img alt="../_images/AE_loop.png" src="../_images/AE_loop.png" style="width: 30%;" />
+</a>
+</figure>
+<p>Dans l’apprentissage par renforcement, la boucle classique « agent-environnement » est une représentation simplifiée de l’interaction entre un agent et un environnement.
+L’agent reçoit une observation de l’environnement, sélectionne une action, que l’environnement utilise pour déterminer la récompense et la prochaine observation.
+Ce cycle se répète jusqu’à ce que l’environnement se termine (termine).</p>
+<p>Pour Gymnasium, la boucle « agent-environnement » est implémentée comme suit pour un seul épisode (jusqu’à la fin de l’environnement).</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Boucle agent-environnement pour un épisode avec Gymnasium</span><a class="headerlink" href="#id1" title="Lien vers ce code"></a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">gymnasium</span> <span class="k">as</span> <span class="nn">gym</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;LunarLander-v3&quot;</span><span class="p">,</span> <span class="n">render_mode</span><span class="o">=</span><span class="s2">&quot;human&quot;</span><span class="p">)</span>
+<span class="linenos"> 4</span><span class="n">observation</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="n">episode_over</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="linenos"> 7</span><span class="k">while</span> <span class="ow">not</span> <span class="n">episode_over</span><span class="p">:</span>
+<span class="linenos"> 8</span>    <span class="n">action</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">action_space</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>  <span class="c1"># agent policy that uses the observation and info</span>
+<span class="hll"><span class="linenos"> 9</span>    <span class="n">observation</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">terminated</span><span class="p">,</span> <span class="n">truncated</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+</span><span class="linenos">10</span>
+<span class="hll"><span class="linenos">11</span>    <span class="n">episode_over</span> <span class="o">=</span> <span class="n">terminated</span> <span class="ow">or</span> <span class="n">truncated</span>
+</span><span class="linenos">12</span>
+<span class="linenos">13</span><span class="n">env</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>À la ligne 9, une action est sélectionnée par l’agent et envoyée à l’environnement.
+Gymnasium renvoie un tuple contenant l’observation, la récompense, un booléen indiquant si l’épisode est terminé parce qu’un état final est atteint, un booléen indiquant si l’épisode est terminé parce que l’horizon de temps est atteint et des informations supplémentaires stockées dans info.</p>
+<p>L’épisode se termine lorsque soit un état final est atteint, soit l’horizon de temps est atteint, c’est-à-dire que l’un des deux booléens est True (ligne 11).</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Manuel YGUEL.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
