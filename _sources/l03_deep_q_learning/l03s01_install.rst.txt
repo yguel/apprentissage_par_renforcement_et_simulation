@@ -36,4 +36,5 @@ Pour cela, il suffit d'ouvrir google colab dans un navigateur web:
 * `https://colab.research.google.com/ <https://colab.research.google.com/>`_
 
 Puis de faire 'File > Open notebook' et de coller l'URL suivante dans le champ 'GitHub' :
+
 * `https://github.com/yguel/apprentissage_par_renforcement_et_simulation/blob/main/doc/sphinx/source/l03_deep_q_learning/resources/notebooks/Tutorial_Deep_Q_Learning.ipynb <https://github.com/yguel/apprentissage_par_renforcement_et_simulation/blob/main/doc/sphinx/source/l03_deep_q_learning/resources/notebooks/Tutorial_Deep_Q_Learning.ipynb>`_
