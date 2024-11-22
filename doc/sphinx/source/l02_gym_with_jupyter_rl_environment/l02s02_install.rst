@@ -23,9 +23,9 @@ Ajouter le bout de code qui suit à votre fichier de configuration du shell ``~/
    :caption: Fonction pour lancer facilement conda depuis la console
    :linenos:
 
-===========================================
-Installer OpenAI Gym et Jupyter avec conda
-===========================================
+================================================================
+Installer OpenAI Gym (gymansium version) et Jupyter avec conda
+================================================================
 
 .. code-block:: bash
 
@@ -33,8 +33,9 @@ Installer OpenAI Gym et Jupyter avec conda
    conda create -n rltutorials
    conda activate rltutorials
    conda install -c conda-forge jupyterlab
-   pip install rlberry[torch]
-   pip install gym
+   pip install swig
+   pip install "gymnasium[all]"
+   pip install torch
 
 ======================
 Tester l'installation
