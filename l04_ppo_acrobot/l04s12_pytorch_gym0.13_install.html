@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Expérimenter avec un GridWorld &mdash; Documentation Apprentissage par Renforcement et Simulation 1.0.0</title>
+  <title>Installer les packages python pour expérimenter avec PPO &mdash; Documentation Apprentissage par Renforcement et Simulation 1.0.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
@@ -24,9 +24,7 @@
       <script src="../_static/translations.js?v=e6b791cb"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Recherche" href="../search.html" />
-    <link rel="next" title="Installer les outils logiciels" href="l02s02_install.html" />
-    <link rel="prev" title="Table des matières" href="../index.html" /> 
+    <link rel="search" title="Recherche" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -49,14 +47,10 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Apprentissage par Renforcement et Simulation</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Expérimenter avec un GridWorld</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="l02s02_install.html">Installer les outils logiciels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="l02s03_how_gym_works.html">Comment gymnasium fonctionne ?</a></li>
-</ul>
-</li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../l02_gym_with_jupyter_rl_environment/l02s01_grid_world_experiments_with_gym.html">Expérimenter avec un GridWorld</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../l03_deep_q_learning/l03s00_index.html">Tutoriel Deep Q-Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../l04_ppo_acrobot/l04s01_ppo_algorithm.html">The PPO algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="l04s01_ppo_algorithm.html">The PPO algorithm</a></li>
 </ul>
 
         </div>
@@ -73,9 +67,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Expérimenter avec un GridWorld</li>
+      <li class="breadcrumb-item active">Installer les packages python pour expérimenter avec PPO</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/l02_gym_with_jupyter_rl_environment/l02s01_grid_world_experiments_with_gym.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+            <a href="../_sources/l04_ppo_acrobot/l04s12_pytorch_gym0.13_install.rst.txt" rel="nofollow"> Afficher la source de la page</a>
       </li>
   </ul>
   <hr/>
@@ -83,32 +77,38 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="experimenter-avec-un-gridworld">
-<h1>Expérimenter avec un GridWorld<a class="headerlink" href="#experimenter-avec-un-gridworld" title="Lien vers cette rubrique"></a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="l02s02_install.html">Installer les outils logiciels</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="l02s02_install.html#installer-conda">Installer conda</a></li>
-<li class="toctree-l2"><a class="reference internal" href="l02s02_install.html#installer-openai-gym-gymansium-version-et-jupyter-avec-conda">Installer OpenAI Gym (gymansium version) et Jupyter avec conda</a></li>
-<li class="toctree-l2"><a class="reference internal" href="l02s02_install.html#tester-l-installation">Tester l’installation</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="l02s03_how_gym_works.html">Comment gymnasium fonctionne ?</a></li>
-</ul>
+  <section id="installer-les-packages-python-pour-experimenter-avec-ppo">
+<h1>Installer les packages python pour expérimenter avec PPO<a class="headerlink" href="#installer-les-packages-python-pour-experimenter-avec-ppo" title="Lien vers cette rubrique"></a></h1>
+<section id="upgrader-l-environnement-conda">
+<h2>Upgrader l’environnement conda<a class="headerlink" href="#upgrader-l-environnement-conda" title="Lien vers cette rubrique"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda312_init
+conda<span class="w"> </span>activate<span class="w"> </span>rltutorials
+conda<span class="w"> </span>install<span class="w"> </span>tensordict
+pip<span class="w"> </span>install<span class="w"> </span>torchrl<span class="w"> </span>tqdm
+</pre></div>
 </div>
-<div class="line-block">
-<div class="line">Nous allons expérimenter avec un environnement de type GridWorld, qui est un environnement de type grille où un agent peut se déplacer dans les quatre directions (haut, bas, gauche, droite) et où il peut recevoir des récompenses positives ou négatives en fonction de sa position.</div>
-<div class="line">Nous allons utiliser l’implémentation de GridWorld fournie par la librairie <a class="reference external" href="https://gymnasium.farama.org/">Gymnasium</a> qui est un fork maintenu de la librairie <a class="reference external" href="https://gym.openai.com/">OpenAI Gym</a> qui n’est plus maintenue.</div>
+</section>
+<section id="tester-l-installation">
+<h2>Tester l’installation<a class="headerlink" href="#tester-l-installation" title="Lien vers cette rubrique"></a></h2>
+<p>En lançant JupyterLab</p>
+<p>Soit dans la même console que celle où vous avez lancé la dernière commande (<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">agilerl</span></code>):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>lab
+</pre></div>
 </div>
+<p>Soit dans une nouvelle console, lancez:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda312_init
+conda<span class="w"> </span>activate<span class="w"> </span>rltutorials
+jupyter<span class="w"> </span>lab
+</pre></div>
+</div>
+<p>Télecharger le jupyter notebook pour expérimenter avec PPO:</p>
+</section>
 </section>
 
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
-        <a href="../index.html" class="btn btn-neutral float-left" title="Table des matières" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
-        <a href="l02s02_install.html" class="btn btn-neutral float-right" title="Installer les outils logiciels" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 
