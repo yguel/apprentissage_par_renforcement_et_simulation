@@ -12,7 +12,7 @@ Upgrader l'environnement conda
 
    conda312_init
    conda activate rltutorials
-   pip install swig
+   conda install swig
    pip install "gymnasium[all]"
    pip install torch
 

@@ -34,7 +34,7 @@ Installer OpenAI Gym (gymansium version) et Jupyter avec conda
    conda activate rltutorials
    conda install -c conda-forge jupyterlab
    conda install swig
-   conda install "gymnasium[all]"
+   pip install "gymnasium[all]"
    pip install torch
 
 ======================
