@@ -12,7 +12,7 @@ Télécharger et installer Miniconda :
 
    mkdir -p ~/system/python/anaconda
    cd ~/system/python/anaconda
-   wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O Miniconda3-latest-2024.09.sh
+   wget https://repo.anaconda.com/miniconda/Miniconda3-py312_24.9.2-0-Linux-x86_64.sh -O Miniconda3-latest-2024.09.sh
    bash Miniconda3-latest-2024.09.sh -b -u -p miniconda312
    rm Miniconda3-latest-2024.09.sh
 
