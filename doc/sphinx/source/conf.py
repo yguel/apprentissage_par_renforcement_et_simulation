@@ -28,6 +28,15 @@ templates_path = ['_templates']
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 source_suffix = [".rst", ".md"]
 
+rst_prolog = """
+.. role:: underline
+    :class: underline
+
+.. |br| raw:: html
+
+      <br>
+"""
+
 language = 'fr'
 
 # -- Options for HTML output -------------------------------------------------
