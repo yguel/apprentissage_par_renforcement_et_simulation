@@ -96,9 +96,9 @@
 <p>Télécharger et installer Miniconda :</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/system/python/anaconda
 <span class="nb">cd</span><span class="w"> </span>~/system/python/anaconda
-wget<span class="w"> </span>https://repo.anaconda.com/miniconda/Miniconda3-py312_24.9.2-0-Linux-x86_64.sh<span class="w"> </span>-O<span class="w"> </span>Miniconda3-latest-2024.09.sh
-bash<span class="w"> </span>Miniconda3-latest-2024.09.sh<span class="w"> </span>-b<span class="w"> </span>-u<span class="w"> </span>-p<span class="w"> </span>miniconda312
-rm<span class="w"> </span>Miniconda3-latest-2024.09.sh
+wget<span class="w"> </span>https://repo.anaconda.com/miniconda/Miniconda3-py312_24.9.2-0-Linux-x86_64.sh<span class="w"> </span>-O<span class="w"> </span>Miniconda3-2024.09.sh
+bash<span class="w"> </span>Miniconda3-2024.09.sh<span class="w"> </span>-b<span class="w"> </span>-u<span class="w"> </span>-p<span class="w"> </span>miniconda312
+rm<span class="w"> </span>Miniconda3-2024.09.sh
 </pre></div>
 </div>
 <p>Ajouter le bout de code qui suit à votre fichier de configuration du shell <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code>:</p>
@@ -156,6 +156,38 @@ jupyter<span class="w"> </span>lab
 <p>Cela doit ouvrir une nouvelle fenêtre ou un nouvel onglet de navigateur avec JupyterLab, comme sur l’image ci-dessous:</p>
 <a class="reference internal image-reference" href="../_images/jupyterlab.png"><img alt="JupyterLab" class="align-center" src="../_images/jupyterlab.png" style="width: 800px;" />
 </a>
+<p>Dans cette fenêtre tester l’exemple suivant de gymnasium:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">gymnasium</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gym</span>
+
+<span class="c1"># Initialise the environment</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;LunarLander-v3&quot;</span><span class="p">,</span> <span class="n">render_mode</span><span class="o">=</span><span class="s2">&quot;human&quot;</span><span class="p">)</span>
+
+<span class="c1"># Reset the environment to generate the first observation</span>
+<span class="n">observation</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+   <span class="c1"># this is where you would insert your policy</span>
+   <span class="n">action</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">action_space</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+
+   <span class="c1"># step (transition) through the environment with the action</span>
+   <span class="c1"># receiving the next observation, reward and if the episode has terminated or truncated</span>
+   <span class="n">observation</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">terminated</span><span class="p">,</span> <span class="n">truncated</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+
+   <span class="c1"># If the episode has ended then we can reset to start a new episode</span>
+   <span class="k">if</span> <span class="n">terminated</span> <span class="ow">or</span> <span class="n">truncated</span><span class="p">:</span>
+      <span class="n">observation</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+<span class="n">env</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>If there is no error, and you see the LunarLander environment, then you have successfully installed the necessary software to experiment with Reinforcement Learning using Gymnasium from farama and JupyterLab.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If your system does not find gymnasium: ensure you installed it with pip (<cite>pip install « gymnasium[all] »</cite>).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you have a problem with installing gymnasium, especially problem related to the package <code class="docutils literal notranslate"><span class="pre">box2d</span></code>, make sure you have installed the package <code class="docutils literal notranslate"><span class="pre">swig</span></code> with <span class="underline">conda</span> (<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">swig</span></code>).</p>
+</div>
 </section>
 </section>
 
