@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Expérimenter avec FrozenLake2 &mdash; Documentation Apprentissage par Renforcement et Simulation 1.0.0</title>
+  <title>Installation d’un environnement MuJoCo &mdash; Documentation Apprentissage par Renforcement et Simulation 1.0.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
@@ -34,7 +34,8 @@
       <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Recherche" href="../search.html" /> 
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="prev" title="Introduction avec MuJoCo" href="l01s00_index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -57,8 +58,14 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Apprentissage par Renforcement et Simulation</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../l01_introduction_with_mujoco/l01s00_index.html">Introduction avec MuJoCo</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="l01s00_index.html">Introduction avec MuJoCo</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Installation d’un environnement MuJoCo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#premiere-verification-de-l-installation">Première vérification de l’installation</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -75,9 +82,10 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Expérimenter avec FrozenLake2</li>
+          <li class="breadcrumb-item"><a href="l01s00_index.html">Introduction avec MuJoCo</a></li>
+      <li class="breadcrumb-item active">Installation d’un environnement MuJoCo</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/l02_gym_with_jupyter_rl_environment/s04_experiment_with_frozenLake2.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+            <a href="../_sources/l01_introduction_with_mujoco/l01s01_installation_mujoco.rst.txt" rel="nofollow"> Afficher la source de la page</a>
       </li>
   </ul>
   <hr/>
@@ -85,14 +93,49 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="experimenter-avec-frozenlake2">
-<h1>Expérimenter avec FrozenLake2<a class="headerlink" href="#experimenter-avec-frozenlake2" title="Lien vers cette rubrique"></a></h1>
+  <section id="installation-d-un-environnement-mujoco">
+<h1>Installation d’un environnement MuJoCo<a class="headerlink" href="#installation-d-un-environnement-mujoco" title="Lien vers cette rubrique"></a></h1>
+<ol class="arabic simple">
+<li><p>Installation en utilisant docker. C’est la plus simple et qui marche sur windows, mac et linux.</p></li>
+</ol>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-0">
+Docker pour linux</label><div class="sd-tab-content docutils">
+<ol class="arabic">
+<li><p>Créer un dossier pour stocker les fichiers du cours</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/rl/mujoco
+</pre></div>
+</div>
+</li>
+<li><p>Télécharger le fichier <a class="reference download internal" download="" href="../_downloads/3fc7448beb692a08975b407d77be80c0/start.sh"><code class="xref download docutils literal notranslate"><span class="pre">start.sh</span></code></a> et placez le dans le dossier <cite>~/rl/mujoco</cite></p></li>
+<li><p>Rendez le script start.sh exécutable:</p></li>
+<li><p>Lancez le script start.sh</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/rl/mujoco<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>./start.sh
+</pre></div>
+</div>
+</li>
+<li><p>Dans une autre fenêtre de navigateur, ouvrez l’URL suivante: <a class="reference external" href="http://localhost:8888">http://localhost:8888</a>. Vous devriez voir une interface jupyter.</p></li>
+<li><p>Dans une fenêtre de navigateur, ouvrez l’URL suivante: <a class="reference external" href="http://localhost:6080">http://localhost:6080</a>. Vous devriez voir une fenêtre NO VNC, vous n’avez plus qu’à cliquer pour vous connecter et vous devriez voir un bureau linux.</p></li>
+<li><p>Dans cette dernière fenêtre, vous pouvez maintenant ouvrir un terminal et exécuter les vérifications.</p></li>
+</ol>
+</div>
+</div>
+<section id="premiere-verification-de-l-installation">
+<h2>Première vérification de l’installation<a class="headerlink" href="#premiere-verification-de-l-installation" title="Lien vers cette rubrique"></a></h2>
+<p>Pour faire une première vérification que l’installation de MuJoCo s’est bien passée, vous pouvez exécuter la commande suivante dans un terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/workspace/examples<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>python3<span class="w"> </span>mujoco_example.py
+</pre></div>
+</div>
+</section>
 </section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="l01s00_index.html" class="btn btn-neutral float-left" title="Introduction avec MuJoCo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+    </div>
 
   <hr/>
 
