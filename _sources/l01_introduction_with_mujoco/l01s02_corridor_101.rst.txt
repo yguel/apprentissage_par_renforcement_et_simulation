@@ -6,7 +6,7 @@ Assurez-vous que vous utilisez le navigateur web du docker (celui ouvert avec l'
 Dans ce navigateur ouvrez cette page: 'https://yguel.github.io/apprentissage_par_renforcement_et_simulation/l01_introduction_with_mujoco/l01s02_corridor_101.html'.
 
 ==================================================
-Premier exercice : environnement, clavier, caméra
+1er exercice : environnement, clavier, caméra
 ==================================================
 
 Télécharger les fichiers suivants dans le dossier `~/rl/mujoco/workspace/t00_corridor`
@@ -33,7 +33,7 @@ Pour exécuter le code il vous suffit de lancer la commande suivante dans un ter
 Pour valider l'exercice 3, vous devez fermer la fenêtre graphique et relancer la commande, la vue de la caméra doit être correcte au démarrage.
 
 ==============================================================
-Deuxième exercice : robot, actionneurs et pilotage au clavier
+2ème exercice : robot, actionneurs et pilotage au clavier
 ==============================================================
 
 Télécharger les fichiers suivants dans le dossier `~/rl/mujoco/workspace/t01_4_wheels_robot`
@@ -52,3 +52,17 @@ Ouvrez le fichier `t01_4_wheels_robot_pilot.py` et complétez le code pour réal
 #. Utilisez le clavier pour piloter le robot
 #. Modifier les paramètres du plan pour voir comment le robot réagit
 #. Bonus: Modifier le contrôle des roues pour voir comment le robot réagit
+
+
+==========================================
+3ème exercice : le robot dans le corridor
+==========================================
+
+Créer un nouveau dossier `~/rl/mujoco/workspace/t02_robot_in_corridor`
+Dans ce dossier, créer un nouveau fichier `t02_4_wheels_robot_in_corridor.py`.
+
+#. Faites en sorte que le robot de l'exercice 2 puisse se déplacer dans le couloir de l'exercice 1.
+#. Créer un film de 30 secondes en utilisant une caméra qui suit le robot (voir le 1er tutorial pour les détails sur la création de film et de caméra dynamique).
+#. Extra bonus pour les mouvements de caméra les plus cinématographiques.
+
+Cet exercice est à rendre sur moodle.
