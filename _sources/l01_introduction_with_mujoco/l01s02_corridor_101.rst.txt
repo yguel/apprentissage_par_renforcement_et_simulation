@@ -5,9 +5,9 @@ Pratiquons avec MuJoCo et l'environnement corridor
 Assurez-vous que vous utilisez le navigateur web du docker (celui ouvert avec l'URL `http://localhost:6080 <http://localhost:6080>`_) pour faire les vérifications suivantes (cela sera beaucoup plus pratique pour copier/coller les commandes et télécharger les fichiers au bon endroit).
 Dans ce navigateur ouvrez cette page: 'https://yguel.github.io/apprentissage_par_renforcement_et_simulation/l01_introduction_with_mujoco/l01s02_corridor_101.html'.
 
-=================
-Premier exercice 
-=================
+==================================================
+Premier exercice : environnement, clavier, caméra
+==================================================
 
 Télécharger les fichiers suivants dans le dossier `~/rl/mujoco/workspace/t00_corridor`
 
@@ -31,3 +31,24 @@ Pour exécuter le code il vous suffit de lancer la commande suivante dans un ter
    cd ~/rl/mujoco/workspace/t00_corridor && python3 t00_corridor.py
 
 Pour valider l'exercice 3, vous devez fermer la fenêtre graphique et relancer la commande, la vue de la caméra doit être correcte au démarrage.
+
+==============================================================
+Deuxième exercice : robot, actionneurs et pilotage au clavier
+==============================================================
+
+Télécharger les fichiers suivants dans le dossier `~/rl/mujoco/workspace/t01_4_wheels_robot`
+
+.. code-block:: bash
+
+   mkdir -p ~/rl/mujoco/workspace/t01_4_wheels_robot && cd ~/rl/mujoco/workspace/t01_4_wheels_robot
+
+
+#. :download:`4wheels_robot.xml <resources/mujoco_python/corridor_101/four_wheels_robot.xml>`
+#. :download:`t01_4wheels_robot.py <resources/mujoco_python/corridor_101/t01_4_wheels_robot_pilot.py>`
+
+Ouvrez le fichier `t01_4_wheels_robot_pilot.py` et complétez le code pour réaliser les 3 exercices suivants:
+
+#. Afficher l'environnement dans une fenêtre graphique avec un robot en combinant une description de robot et une création d'environnement programmatique
+#. Utilisez le clavier pour piloter le robot
+#. Modifier les paramètres du plan pour voir comment le robot réagit
+#. Bonus: Modifier le contrôle des roues pour voir comment le robot réagit
