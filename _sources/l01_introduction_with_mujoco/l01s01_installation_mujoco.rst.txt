@@ -19,6 +19,7 @@ Installation d'un environnement MuJoCo
       #. Rendez le script start.sh exécutable:
 
          .. code-block:: bash
+
             cd ~/rl/mujoco && chmod +x start.sh
 
       #. Lancez le script start.sh
@@ -38,8 +39,12 @@ Installation d'un environnement MuJoCo
 Première vérification de l'installation
 ========================================
 
-Pour faire une première vérification que l'installation de MuJoCo s'est bien passée, vous pouvez exécuter la commande suivante dans un terminal:
+Assurez-vous que vous utilisez le navigateur web du docker (celui ouvert avec l'URL `http://localhost:6080 <http://localhost:6080>`_) pour faire les vérifications suivantes (cela sera beaucoup plus pratique pour copier/coller les commandes et télécharger les fichiers au bon endroit).
+
+Pour faire une première vérification que l'installation de MuJoCo s'est bien passée, télécharger le fichier :download:`test_mujoco_gl.py <resources/mujoco_python/test_install/test_mujoco_gl.py>` et placez le dans le dossier `~/rl/mujoco/workspace/examples`.
+
+vous pouvez exécuter la commande suivante dans un terminal:
 
 .. code-block:: bash
 
-   cd ~/workspace/examples && python3 mujoco_example.py
+   cd ~/rl/mujoco/workspace/examples && python3 test_mujoco_gl.py
