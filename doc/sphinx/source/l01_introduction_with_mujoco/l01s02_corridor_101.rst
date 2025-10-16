@@ -59,7 +59,7 @@ Ouvrez le fichier `t01_4_wheels_robot_pilot.py` et complétez le code pour réal
 ==========================================
 
 Créer un nouveau dossier `~/rl/mujoco/workspace/t02_robot_in_corridor`
-Dans ce dossier, créer un nouveau fichier `t02_4_wheels_robot_in_corridor.py`.
+Dans ce dossier, créer un nouveau fichier `t02_4_wheels_robot_in_corridor_NOM_Prenom.py`.
 
 #. Faites en sorte que le robot de l'exercice 2 puisse se déplacer dans le couloir de l'exercice 1.
 #. Créer un film de 30 secondes en utilisant une caméra qui suit le robot (voir le 1er tutorial pour les détails sur la création de film et de caméra dynamique).
