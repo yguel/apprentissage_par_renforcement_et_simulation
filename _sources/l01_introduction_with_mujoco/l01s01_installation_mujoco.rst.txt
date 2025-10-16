@@ -48,4 +48,4 @@ vous pouvez exécuter la commande suivante dans un terminal:
 
 .. code-block:: bash
 
-   cd ~/rl/mujoco/workspace/examples && python3 test_mujoco_gl.py
+   cd ~/workspace/examples && python3 test_mujoco_gl.py
