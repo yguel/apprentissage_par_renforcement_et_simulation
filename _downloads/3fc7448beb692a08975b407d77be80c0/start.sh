@@ -74,7 +74,7 @@ build_docker_command() {
     # Basic ports and volumes
     cmd="$cmd -p 6080:6080"        # noVNC desktop
     cmd="$cmd -p 8888:8888"        # Jupyter notebook
-    cmd="$cmd -v $HOME/rl/mujoco/workspace:/home/student/workspace"
+    cmd="$cmd -v /tmp/rl/mujoco/workspace:/home/student/workspace"
     
     # Pass host user UID and GID for proper file permissions
     cmd="$cmd -e HOST_UID=$(id -u)"
@@ -124,7 +124,7 @@ trap cleanup SIGINT SIGTERM
 
 # Create workspace structure
 echo "📁 Setting up workspace..."
-mkdir -p $HOME/rl/mujoco/workspace/{notebooks,examples,models}
+mkdir -p /tmp/rl/mujoco/workspace/{notebooks,examples,models}
 
 # Stop any existing container
 if docker ps -a | grep -q "$CONTAINER_NAME"; then
@@ -197,6 +197,8 @@ fi
 
 # Build and display the command
 DOCKER_CMD=$(build_docker_command)
+echo $DOCKER_CMD
+
 echo ""
 echo "🚀 Starting container in foreground mode..."
 echo "💡 Control tips:"
@@ -206,7 +208,7 @@ echo "   🌐 Access will be available at:"
 echo "      Desktop: http://localhost:6080"
 echo "      Jupyter: http://localhost:8888"
 echo "   📁 Workspace folder:"
-echo "      Local:     $HOME/rl/mujoco/workspace"
+echo "      Local:     /tmp/rl/mujoco/workspace"
 echo "      Container: /home/student/workspace"
 echo ""
 echo "⏳ Starting services (this may take 30 seconds)..."
