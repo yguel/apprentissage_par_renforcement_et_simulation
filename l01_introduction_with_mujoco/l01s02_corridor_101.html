@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Introduction avec MuJoCo &mdash; Documentation Apprentissage par Renforcement et Simulation 1.0.0</title>
+  <title>Pratiquons avec MuJoCo et l’environnement corridor &mdash; Documentation Apprentissage par Renforcement et Simulation 1.0.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
@@ -35,8 +35,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
-    <link rel="next" title="Installation d’un environnement MuJoCo" href="l01s01_installation_mujoco.html" />
-    <link rel="prev" title="Table des matières" href="../index.html" /> 
+    <link rel="prev" title="Installation d’un environnement MuJoCo" href="l01s01_installation_mujoco.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -60,9 +59,12 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Apprentissage par Renforcement et Simulation</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction avec MuJoCo</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="l01s00_index.html">Introduction avec MuJoCo</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="l01s01_installation_mujoco.html">Installation d’un environnement MuJoCo</a></li>
-<li class="toctree-l2"><a class="reference internal" href="l01s02_corridor_101.html">Pratiquons avec MuJoCo et l’environnement corridor</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Pratiquons avec MuJoCo et l’environnement corridor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#premier-exercice">Premier exercice</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -81,9 +83,10 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Introduction avec MuJoCo</li>
+          <li class="breadcrumb-item"><a href="l01s00_index.html">Introduction avec MuJoCo</a></li>
+      <li class="breadcrumb-item active">Pratiquons avec MuJoCo et l’environnement corridor</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/l01_introduction_with_mujoco/l01s00_index.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+            <a href="../_sources/l01_introduction_with_mujoco/l01s02_corridor_101.rst.txt" rel="nofollow"> Afficher la source de la page</a>
       </li>
   </ul>
   <hr/>
@@ -91,28 +94,39 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="introduction-avec-mujoco">
-<h1>Introduction avec MuJoCo<a class="headerlink" href="#introduction-avec-mujoco" title="Lien vers cette rubrique"></a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="l01s01_installation_mujoco.html">Installation d’un environnement MuJoCo</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="l01s01_installation_mujoco.html#premiere-verification-de-l-installation">Première vérification de l’installation</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="l01s02_corridor_101.html">Pratiquons avec MuJoCo et l’environnement corridor</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="l01s02_corridor_101.html#premier-exercice">Premier exercice</a></li>
-</ul>
-</li>
-</ul>
+  <section id="pratiquons-avec-mujoco-et-l-environnement-corridor">
+<h1>Pratiquons avec MuJoCo et l’environnement corridor<a class="headerlink" href="#pratiquons-avec-mujoco-et-l-environnement-corridor" title="Lien vers cette rubrique"></a></h1>
+<p>Assurez-vous que vous utilisez le navigateur web du docker (celui ouvert avec l’URL <a class="reference external" href="http://localhost:6080">http://localhost:6080</a>) pour faire les vérifications suivantes (cela sera beaucoup plus pratique pour copier/coller les commandes et télécharger les fichiers au bon endroit).
+Dans ce navigateur ouvrez cette page: “<a class="reference external" href="https://yguel.github.io/apprentissage_par_renforcement_et_simulation/l01_introduction_with_mujoco/l01s02_corridor_101.html">https://yguel.github.io/apprentissage_par_renforcement_et_simulation/l01_introduction_with_mujoco/l01s02_corridor_101.html</a>”.</p>
+<section id="premier-exercice">
+<h2>Premier exercice<a class="headerlink" href="#premier-exercice" title="Lien vers cette rubrique"></a></h2>
+<p>Télécharger les fichiers suivants dans le dossier <cite>~/rl/mujoco/workspace/t00_corridor</cite></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/rl/mujoco/workspace/t00_corridor<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/rl/mujoco/workspace/t00_corridor
+</pre></div>
 </div>
+<ol class="arabic simple">
+<li><p><a class="reference download internal" download="" href="../_downloads/b6037bc2db609df0b5cead212f3930ff/corridor_3x100.xml"><code class="xref download docutils literal notranslate"><span class="pre">corridor_3x100.xml</span></code></a></p></li>
+<li><p><a class="reference download internal" download="" href="../_downloads/d416610c0b45584aad4285c973fc595e/t00_corridor.py"><code class="xref download docutils literal notranslate"><span class="pre">t00_corridor.py</span></code></a></p></li>
+</ol>
+<p>Ouvrez le fichier <cite>t00_corridor.py</cite> et complétez le code pour réaliser les 3 exercices suivants:</p>
+<ol class="arabic simple">
+<li><p>Afficher l’environnement dans une fenêtre graphique</p></li>
+<li><p>Utilisez le clavier pour afficher les paramètres de la caméra</p></li>
+<li><p>Modifier les paramètres de la caméra pour avoir une bonne vue du couloir au démarrage</p></li>
+</ol>
+<p>Pour exécuter le code il vous suffit de lancer la commande suivante dans un terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/rl/mujoco/workspace/t00_corridor<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>python3<span class="w"> </span>t00_corridor.py
+</pre></div>
+</div>
+<p>Pour valider l’exercice 3, vous devez fermer la fenêtre graphique et relancer la commande, la vue de la caméra doit être correcte au démarrage.</p>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
-        <a href="../index.html" class="btn btn-neutral float-left" title="Table des matières" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
-        <a href="l01s01_installation_mujoco.html" class="btn btn-neutral float-right" title="Installation d’un environnement MuJoCo" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="l01s01_installation_mujoco.html" class="btn btn-neutral float-left" title="Installation d’un environnement MuJoCo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
     </div>
 
   <hr/>

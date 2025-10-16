@@ -40,6 +40,7 @@ Première vérification de l'installation
 ========================================
 
 Assurez-vous que vous utilisez le navigateur web du docker (celui ouvert avec l'URL `http://localhost:6080 <http://localhost:6080>`_) pour faire les vérifications suivantes (cela sera beaucoup plus pratique pour copier/coller les commandes et télécharger les fichiers au bon endroit).
+Dans ce navigateur ouvrez cette page: 'https://yguel.github.io/apprentissage_par_renforcement_et_simulation/l01_introduction_with_mujoco/l01s01_installation_mujoco.html#premiere-verification-de-l-installation'.
 
 Pour faire une première vérification que l'installation de MuJoCo s'est bien passée, télécharger le fichier :download:`test_mujoco_gl.py <resources/mujoco_python/test_install/test_mujoco_gl.py>` et placez le dans le dossier `~/rl/mujoco/workspace/examples`.
 
