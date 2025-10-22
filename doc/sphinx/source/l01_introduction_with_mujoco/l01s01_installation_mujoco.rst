@@ -40,6 +40,10 @@ Vous pouvez suivre les instructions ci-dessous en fonction de votre système d'e
 
             cd ~/rl/mujoco && ./start.sh
 
+      Quand vous avez fini votre session de travail, vous devez fermer le docker proprement en utilisant ``CTRL+C`` dans le terminal où le script a été lancé.
+
+      Le script est codé de telle sorte que si vous ne pouvez pas avoir votre répertoire de travail (workspace) persistant (c'est-à-dire que docker ne peut pas monter lier un dossier à l'intérieur de votre répertoire HOME à un volume docker), un workspace temporaire sera créé dans /tmp/rl/mujoco/workspace. Quand vous fermer la session docker avec ``CTRL+C``, alors le script fera automatiquement une sauvegarde de ce workspace temporaire dans le dossier que vous avez indiqué dans la variable d'environnement ``BACKUP_TARGET_DIR`` (par défaut ``$HOME/rl/docker_snapshots/mujoco_snapshots``).
+
       .. dropdown:: Si vous rencontrez des problèmes
 
          Si vous rencontrez des problèmes, voyez les paramètres avancés avec la commande help:
