@@ -62,7 +62,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="l01s00_index.html">Introduction avec MuJoCo</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Installation d’un environnement MuJoCo</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#premiere-verification-de-l-installation">Première vérification de l’installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#premieres-verifications-de-l-installation">Premières vérifications de l’installation</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="l01s02_corridor_101.html">Pratiquons avec MuJoCo et l’environnement corridor</a></li>
@@ -100,19 +100,36 @@
 <ol class="arabic simple">
 <li><p>Installation en utilisant docker. C’est la plus simple et qui marche sur windows, mac et linux.</p></li>
 </ol>
+<p>Dans la salle de cours, docker est déjà installé sur les machines linux. Si vous êtes sur votre propre machine, suivez les instructions ci-dessous pour installer docker.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Comment installer Docker sur votre machine si besoin ?</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" for="sd-tab-item-0">
-Docker pour linux</label><div class="sd-tab-content docutils">
-<ol class="arabic">
-<li><p>Créer un dossier pour stocker les fichiers du cours</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/rl/mujoco
-</pre></div>
+Installer Docker sur Linux</label><div class="sd-tab-content docutils">
+<p class="sd-card-text">Pour installer docker sur linux, vous pouvez suivre les instructions officielles: <a class="reference external" href="https://docs.docker.com/engine/install/">https://docs.docker.com/engine/install/</a>.</p>
 </div>
-</li>
-<li><p>Télécharger le fichier <a class="reference download internal" download="" href="../_downloads/3fc7448beb692a08975b407d77be80c0/start.sh"><code class="xref download docutils literal notranslate"><span class="pre">start.sh</span></code></a> et placez le dans le dossier <cite>~/rl/mujoco</cite></p></li>
-<li><p>Rendez le script start.sh exécutable:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/rl/mujoco<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>start.sh
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-1">
+Installer Docker sur Windows</label><div class="sd-tab-content docutils">
+<p class="sd-card-text">Pour installer docker sur Windows, vous pouvez suivre les instructions officielles: <a class="reference external" href="https://docs.docker.com/desktop/install/windows-install/">https://docs.docker.com/desktop/install/windows-install/</a>.</p>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-2">
+Installer Docker sur Mac</label><div class="sd-tab-content docutils">
+<p class="sd-card-text">Pour installer docker sur Mac, vous pouvez suivre les instructions officielles: <a class="reference external" href="https://docs.docker.com/desktop/install/mac-install/">https://docs.docker.com/desktop/install/mac-install/</a>.</p>
+</div>
+</div>
+</div>
+</details><p>Vous pouvez suivre les instructions ci-dessous en fonction de votre système d’exploitation.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-3">
+Docker pour Linux (machines de la salle de cours)</label><div class="sd-tab-content docutils">
+<ol class="arabic">
+<li><p>Créer un dossier pour stocker les fichiers du cours, télécharger le script d’installation et le rendre exécutable:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/rl/mujoco<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/rl/mujoco<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>wget<span class="w"> </span>-O<span class="w"> </span>start.sh<span class="w"> </span>https://raw.githubusercontent.com/yguel/docker_mujoco_rl_101/main/start.sh<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>start.sh
 </pre></div>
 </div>
 </li>
@@ -121,19 +138,174 @@ Docker pour linux</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </li>
-<li><p>Dans une autre fenêtre de navigateur, ouvrez l’URL suivante: <a class="reference external" href="http://localhost:8888">http://localhost:8888</a>. Vous devriez voir une interface jupyter.</p></li>
-<li><p>Dans une fenêtre de navigateur, ouvrez l’URL suivante: <a class="reference external" href="http://localhost:6080">http://localhost:6080</a>. Vous devriez voir une fenêtre NO VNC, vous n’avez plus qu’à cliquer pour vous connecter et vous devriez voir un bureau linux.</p></li>
-<li><p>Dans cette dernière fenêtre, vous pouvez maintenant ouvrir un terminal et exécuter les vérifications.</p></li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Si vous rencontrez des problèmes</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Si vous rencontrez des problèmes, voyez les paramètres avancés avec la commande help:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./start.sh<span class="w"> </span>--help
+</pre></div>
+</div>
+</div></blockquote>
+<p class="sd-card-text">Vous pouvez aussi directement lancer le docker avec des options personnalisées, exemple sans accélération matérielle NVIDIA:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--name<span class="w"> </span>mujoco-student<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--shm-size<span class="o">=</span>4g<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-p<span class="w"> </span><span class="m">6080</span>:6080<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-p<span class="w"> </span><span class="m">8888</span>:8888<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-v<span class="w"> </span><span class="nv">$HOME</span>/rl/mujoco/workspace:/home/student/workspace<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">HOST_UID</span><span class="o">=</span><span class="k">$(</span>id<span class="w"> </span>-u<span class="k">)</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">HOST_GID</span><span class="o">=</span><span class="k">$(</span>id<span class="w"> </span>-g<span class="k">)</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">HOST_WORKSPACE_INFO</span><span class="o">=</span><span class="s2">&quot;Persistent: </span><span class="nv">$HOME</span><span class="s2">/rl/mujoco&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">USE_TEMP_WORKSPACE</span><span class="o">=</span><span class="s2">&quot;false&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">BACKUP_TARGET_DIR</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/rl/docker_snapshots/mujoco_snapshots&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">VNC_RESOLUTION</span><span class="o">=</span>1920x1080<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">VNC_DEPTH</span><span class="o">=</span><span class="m">24</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">VNC_DPI</span><span class="o">=</span><span class="m">96</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">NOVNC_PORT</span><span class="o">=</span><span class="m">6080</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">VNC_PORT</span><span class="o">=</span><span class="m">5901</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">DISPLAY</span><span class="o">=</span>:1<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">LIBGL_ALWAYS_SOFTWARE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">MUJOCO_GL</span><span class="o">=</span>osmesa<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>yguel/mujoco-desktop:v1.0
+</pre></div>
+</div>
+</div></blockquote>
+<p class="sd-card-text">exemple avec accélération matérielle NVIDIA:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--name<span class="w"> </span>mujoco-student<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--shm-size<span class="o">=</span>4g<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-p<span class="w"> </span><span class="m">6080</span>:6080<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-p<span class="w"> </span><span class="m">8888</span>:8888<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-v<span class="w"> </span><span class="nv">$HOME</span>/rl/mujoco/workspace:/home/student/workspace<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">HOST_UID</span><span class="o">=</span><span class="k">$(</span>id<span class="w"> </span>-u<span class="k">)</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">HOST_GID</span><span class="o">=</span><span class="k">$(</span>id<span class="w"> </span>-g<span class="k">)</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">HOST_WORKSPACE_INFO</span><span class="o">=</span><span class="s2">&quot;Persistent: </span><span class="nv">$HOME</span><span class="s2">/rl/mujoco&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">USE_TEMP_WORKSPACE</span><span class="o">=</span><span class="s2">&quot;false&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">BACKUP_TARGET_DIR</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/rl/docker_snapshots/mujoco_snapshots&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">VNC_RESOLUTION</span><span class="o">=</span>1920x1080<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">VNC_DEPTH</span><span class="o">=</span><span class="m">24</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">VNC_DPI</span><span class="o">=</span><span class="m">96</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">NOVNC_PORT</span><span class="o">=</span><span class="m">6080</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">VNC_PORT</span><span class="o">=</span><span class="m">5901</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--runtime<span class="o">=</span>nvidia<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">NVIDIA_VISIBLE_DEVICES</span><span class="o">=</span>all<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">DISPLAY</span><span class="o">=</span>:1<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">LIBGL_ALWAYS_SOFTWARE</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>yguel/mujoco-desktop:v1.0
+</pre></div>
+</div>
+</div></blockquote>
+<p class="sd-card-text">exemple avec un workspace temporaire (à sauvegarder manuellement à la fin de la session):</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--name<span class="w"> </span>mujoco-student<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--shm-size<span class="o">=</span>4g<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-p<span class="w"> </span><span class="m">6080</span>:6080<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-p<span class="w"> </span><span class="m">8888</span>:8888<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-v<span class="w"> </span>/tmp/rl/mujoco/workspace:/home/student/workspace<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">HOST_UID</span><span class="o">=</span><span class="k">$(</span>id<span class="w"> </span>-u<span class="k">)</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">HOST_GID</span><span class="o">=</span><span class="k">$(</span>id<span class="w"> </span>-g<span class="k">)</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">HOST_WORKSPACE_INFO</span><span class="o">=</span><span class="s2">&quot;Temporary: /tmp/rl/mujoco (will have to be backed up on exit)&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">USE_TEMP_WORKSPACE</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">BACKUP_TARGET_DIR</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/rl/docker_snapshots/mujoco_snapshots&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">VNC_RESOLUTION</span><span class="o">=</span>1920x1080<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">VNC_DEPTH</span><span class="o">=</span><span class="m">24</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">VNC_DPI</span><span class="o">=</span><span class="m">96</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">NOVNC_PORT</span><span class="o">=</span><span class="m">6080</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">VNC_PORT</span><span class="o">=</span><span class="m">5901</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">DISPLAY</span><span class="o">=</span>:1<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">LIBGL_ALWAYS_SOFTWARE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">MUJOCO_GL</span><span class="o">=</span>osmesa<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>yguel/mujoco-desktop:v1.0
+</pre></div>
+</div>
+</div></blockquote>
+<p class="sd-card-text">dans ce cas n’oubliez pas de sauvegarder votre workspace à la fin de la session en utilisant le <a class="reference download internal" download="" href="../_downloads/6fb8b948c7dfdf98aaf0343b6fb30cee/save_rl_env.sh"><code class="xref download docutils literal notranslate"><span class="pre">script</span> <span class="pre">de</span> <span class="pre">sauvegarde</span> <span class="pre">automatique</span></code></a>:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./save_rl_env.sh
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</details></div>
+<input id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-4">
+Docker pour Windows</label><div class="sd-tab-content docutils">
+<p>Note importante, ces instructions n’ont pas été testées, elles sont fournies à titre indicatif.
+Merci de me faire un retour si vous les testez et rencontrez des problèmes ou au contraire si tout fonctionne bien.</p>
+<p>Dans la suite il faut remplacer <code class="docutils literal notranslate"><span class="pre">&lt;VotreNom&gt;</span></code> par votre nom d’utilisateur windows.</p>
+<ol class="arabic">
+<li><p>Avec docker desktop installé, ouvrez une fenêtre powershell et créez un dossier pour stocker les fichiers du cours:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span><span class="nv">$HOME</span><span class="se">\r</span>l<span class="se">\m</span>ujoco
+</pre></div>
+</div>
+</li>
+<li><p>Si vous n’avez pas d’accélération matérielle NVIDIA, lancer l’image docker manuellement en liant le dossier créé précédemment, en alouant les ports pour jupyter et noVNC, et alouant suffisamment de mémoire (ici 4Go, mais ne mettez pas plus de la moitié de la mémoire totale de votre machine):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--name<span class="w"> </span>mujoco-student<span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>--shm-size<span class="o">=</span>4g<span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-p<span class="w"> </span><span class="m">6080</span>:6080<span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-p<span class="w"> </span><span class="m">8888</span>:8888<span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-v<span class="w"> </span>C:<span class="se">\U</span>sers<span class="se">\&lt;</span>VotreNom&gt;<span class="se">\r</span>l<span class="se">\m</span>ujoco<span class="se">\w</span>orkspace:/home/student/workspace<span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">HOST_WORKSPACE_INFO</span><span class="o">=</span><span class="s2">&quot;Persistent: C:\Users\&lt;VotreNom&gt;\rl\mujoco&quot;</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">USE_TEMP_WORKSPACE</span><span class="o">=</span><span class="s2">&quot;false&quot;</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">BACKUP_TARGET_DIR</span><span class="o">=</span><span class="s2">&quot;C:\Users\&lt;VotreNom&gt;\rl\docker_snapshots\mujoco_snapshots&quot;</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">VNC_RESOLUTION</span><span class="o">=</span>1920x1080<span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">VNC_DEPTH</span><span class="o">=</span><span class="m">24</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">VNC_DPI</span><span class="o">=</span><span class="m">96</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">NOVNC_PORT</span><span class="o">=</span><span class="m">6080</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">VNC_PORT</span><span class="o">=</span><span class="m">5901</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">DISPLAY</span><span class="o">=</span>:1<span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">LIBGL_ALWAYS_SOFTWARE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">MUJOCO_GL</span><span class="o">=</span>osmesa<span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>yguel/mujoco-desktop:v1.0
+</pre></div>
+</div>
+</li>
+<li><p>Si vous avez une carte graphique NVIDIA compatible avec l’accélération matérielle dans docker, vous pouvez lancer l’image docker avec les options supplémentaires suivantes (à ajouter avant le nom de l’image yguel/mujoco-desktop:v1.0):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--name<span class="w"> </span>mujoco-student<span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>--shm-size<span class="o">=</span>4g<span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-p<span class="w"> </span><span class="m">6080</span>:6080<span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-p<span class="w"> </span><span class="m">8888</span>:8888<span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-v<span class="w"> </span>C:<span class="se">\U</span>sers<span class="se">\&lt;</span>VotreNom&gt;<span class="se">\r</span>l<span class="se">\m</span>ujoco<span class="se">\w</span>orkspace:/home/student/workspace<span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>--runtime<span class="o">=</span>nvidia<span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">NVIDIA_VISIBLE_DEVICES</span><span class="o">=</span>all<span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">HOST_WORKSPACE_INFO</span><span class="o">=</span><span class="s2">&quot;Persistent: C:\Users\&lt;VotreNom&gt;\rl\mujoco&quot;</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">USE_TEMP_WORKSPACE</span><span class="o">=</span><span class="s2">&quot;false&quot;</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">BACKUP_TARGET_DIR</span><span class="o">=</span><span class="s2">&quot;C:\Users\&lt;VotreNom&gt;\rl\docker_snapshots\mujoco_snapshots&quot;</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">VNC_RESOLUTION</span><span class="o">=</span>1920x1080<span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">VNC_DEPTH</span><span class="o">=</span><span class="m">24</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">VNC_DPI</span><span class="o">=</span><span class="m">96</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">NOVNC_PORT</span><span class="o">=</span><span class="m">6080</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">VNC_PORT</span><span class="o">=</span><span class="m">5901</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">DISPLAY</span><span class="o">=</span>:1<span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">LIBGL_ALWAYS_SOFTWARE</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="sb">`</span>
+<span class="w">   </span>yguel/mujoco-desktop:v1.0
+</pre></div>
+</div>
+</li>
 </ol>
 </div>
 </div>
-<section id="premiere-verification-de-l-installation">
-<h2>Première vérification de l’installation<a class="headerlink" href="#premiere-verification-de-l-installation" title="Lien vers cette rubrique"></a></h2>
+<section id="premieres-verifications-de-l-installation">
+<h2>Premières vérifications de l’installation<a class="headerlink" href="#premieres-verifications-de-l-installation" title="Lien vers cette rubrique"></a></h2>
+<ol class="arabic">
+<li><p>Dans une autre fenêtre de navigateur, ouvrez l’URL suivante: <a class="reference external" href="http://localhost:8888">http://localhost:8888</a>. Vous devriez voir une interface jupyter.</p></li>
+<li><p>Dans une autre fenêtre de navigateur, ouvrez l’URL suivante: <a class="reference external" href="http://localhost:6080">http://localhost:6080</a>. Vous devriez voir une fenêtre NO VNC, vous n’avez plus qu’à cliquer pour vous connecter et vous devriez voir un bureau linux comme sur la <a class="reference internal" href="#fig-docker-ubuntu-start"><span class="std std-numref">Figure 1</span></a> ci-dessous:</p>
+<figure class="align-center" id="fig-docker-ubuntu-start">
+<img alt="../_images/docker_ok.gif" src="../_images/docker_ok.gif" />
+<figcaption>
+<p><span class="caption-number">Figure 1 </span><span class="caption-text">Interface graphique utilisant un navigateur pour interagir avec le docker  yguel/mujoco-desktop:v1.0 sous ubuntu avec noVNC.</span><a class="headerlink" href="#fig-docker-ubuntu-start" title="Lien vers cette image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Dans cette dernière fenêtre, vous pouvez maintenant ouvrir un terminal et exécuter les vérifications suivantes.</p></li>
+</ol>
 <p>Assurez-vous que vous utilisez le navigateur web du docker (celui ouvert avec l’URL <a class="reference external" href="http://localhost:6080">http://localhost:6080</a>) pour faire les vérifications suivantes (cela sera beaucoup plus pratique pour copier/coller les commandes et télécharger les fichiers au bon endroit).
-Dans ce navigateur ouvrez cette page: “<a class="reference external" href="https://yguel.github.io/apprentissage_par_renforcement_et_simulation/l01_introduction_with_mujoco/l01s01_installation_mujoco.html#premiere-verification-de-l-installation">https://yguel.github.io/apprentissage_par_renforcement_et_simulation/l01_introduction_with_mujoco/l01s01_installation_mujoco.html#premiere-verification-de-l-installation</a>”.</p>
-<p>Pour faire une première vérification que l’installation de MuJoCo s’est bien passée, télécharger le fichier <a class="reference download internal" download="" href="../_downloads/38462f78736a65a0dda59b8d0f9bbbe4/test_mujoco_gl.py"><code class="xref download docutils literal notranslate"><span class="pre">test_mujoco_gl.py</span></code></a> et placez le dans le dossier <cite>~/rl/mujoco/workspace/examples</cite>.</p>
-<p>vous pouvez exécuter la commande suivante dans un terminal:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/workspace/examples<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>python3<span class="w"> </span>test_mujoco_gl.py
+Le navigateur devrait normalement être ouvert à la page suivante: “<a class="reference external" href="https://yguel.github.io/apprentissage_par_renforcement_et_simulation/l01_introduction_with_mujoco/l01s01_installation_mujoco.html#premiere-verification-de-l-installation">https://yguel.github.io/apprentissage_par_renforcement_et_simulation/l01_introduction_with_mujoco/l01s01_installation_mujoco.html#premiere-verification-de-l-installation</a>”.</p>
+<p>Pour faire une première vérification que l’installation de MuJoCo s’est bien passée, télécharger le fichier <a class="reference download internal" download="" href="../_downloads/38462f78736a65a0dda59b8d0f9bbbe4/test_mujoco_gl.py"><code class="xref download docutils literal notranslate"><span class="pre">test_mujoco_gl.py</span></code></a>.</p>
+<p>vous pouvez exécuter la commande suivante dans un terminal qui place le fichier dans le dossier <cite>~/rl/mujoco/workspace/examples</cite> et l’exécute:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mv<span class="w"> </span>~/Downloads/test_mujoco_gl.py<span class="w"> </span>~/workspace/examples/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/workspace/examples<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>python3<span class="w"> </span>test_mujoco_gl.py
 </pre></div>
 </div>
 </section>

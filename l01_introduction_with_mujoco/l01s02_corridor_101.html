@@ -102,37 +102,37 @@
 Dans ce navigateur ouvrez cette page: “<a class="reference external" href="https://yguel.github.io/apprentissage_par_renforcement_et_simulation/l01_introduction_with_mujoco/l01s02_corridor_101.html">https://yguel.github.io/apprentissage_par_renforcement_et_simulation/l01_introduction_with_mujoco/l01s02_corridor_101.html</a>”.</p>
 <section id="er-exercice-environnement-clavier-camera">
 <h2>1er exercice : environnement, clavier, caméra<a class="headerlink" href="#er-exercice-environnement-clavier-camera" title="Lien vers cette rubrique"></a></h2>
-<p>Télécharger les fichiers suivants dans le dossier <cite>~/rl/mujoco/workspace/t00_corridor</cite></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/rl/mujoco/workspace/t00_corridor<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/rl/mujoco/workspace/t00_corridor
+<p>Télécharger les fichiers suivants dans le dossier <code class="docutils literal notranslate"><span class="pre">~/workspace/t00_corridor</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/workspace/t00_corridor<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/workspace/t00_corridor
 </pre></div>
 </div>
 <ol class="arabic simple">
 <li><p><a class="reference download internal" download="" href="../_downloads/b6037bc2db609df0b5cead212f3930ff/corridor_3x100.xml"><code class="xref download docutils literal notranslate"><span class="pre">corridor_3x100.xml</span></code></a></p></li>
 <li><p><a class="reference download internal" download="" href="../_downloads/d416610c0b45584aad4285c973fc595e/t00_corridor.py"><code class="xref download docutils literal notranslate"><span class="pre">t00_corridor.py</span></code></a></p></li>
 </ol>
-<p>Ouvrez le fichier <cite>t00_corridor.py</cite> et complétez le code pour réaliser les 3 exercices suivants:</p>
+<p>Ouvrez le fichier <code class="docutils literal notranslate"><span class="pre">t00_corridor.py</span></code> et complétez le code pour réaliser les 3 exercices suivants:</p>
 <ol class="arabic simple">
 <li><p>Afficher l’environnement dans une fenêtre graphique</p></li>
 <li><p>Utilisez le clavier pour afficher les paramètres de la caméra</p></li>
 <li><p>Modifier les paramètres de la caméra pour avoir une bonne vue du couloir au démarrage</p></li>
 </ol>
 <p>Pour exécuter le code il vous suffit de lancer la commande suivante dans un terminal:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/rl/mujoco/workspace/t00_corridor<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>python3<span class="w"> </span>t00_corridor.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/workspace/t00_corridor<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>python3<span class="w"> </span>t00_corridor.py
 </pre></div>
 </div>
 <p>Pour valider l’exercice 3, vous devez fermer la fenêtre graphique et relancer la commande, la vue de la caméra doit être correcte au démarrage.</p>
 </section>
 <section id="eme-exercice-robot-actionneurs-et-pilotage-au-clavier">
 <h2>2ème exercice : robot, actionneurs et pilotage au clavier<a class="headerlink" href="#eme-exercice-robot-actionneurs-et-pilotage-au-clavier" title="Lien vers cette rubrique"></a></h2>
-<p>Télécharger les fichiers suivants dans le dossier <cite>~/rl/mujoco/workspace/t01_4_wheels_robot</cite></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/rl/mujoco/workspace/t01_4_wheels_robot<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/rl/mujoco/workspace/t01_4_wheels_robot
+<p>Télécharger les fichiers suivants dans le dossier <code class="docutils literal notranslate"><span class="pre">~/workspace/t01_4_wheels_robot</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/workspace/t01_4_wheels_robot<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/workspace/t01_4_wheels_robot
 </pre></div>
 </div>
 <ol class="arabic simple">
 <li><p><a class="reference download internal" download="" href="../_downloads/1887baf47b8509a2a9477c3e3ad3f6a1/four_wheels_robot.xml"><code class="xref download docutils literal notranslate"><span class="pre">4wheels_robot.xml</span></code></a></p></li>
 <li><p><a class="reference download internal" download="" href="../_downloads/1e2c1172836be60bc7c81b2d630ff292/t01_4_wheels_robot_pilot.py"><code class="xref download docutils literal notranslate"><span class="pre">t01_4wheels_robot.py</span></code></a></p></li>
 </ol>
-<p>Ouvrez le fichier <cite>t01_4_wheels_robot_pilot.py</cite> et complétez le code pour réaliser les 3 exercices suivants:</p>
+<p>Ouvrez le fichier <code class="docutils literal notranslate"><span class="pre">t01_4_wheels_robot_pilot.py</span></code> et complétez le code pour réaliser les 3 exercices suivants:</p>
 <ol class="arabic simple">
 <li><p>Afficher l’environnement dans une fenêtre graphique avec un robot en combinant une description de robot et une création d’environnement programmatique</p></li>
 <li><p>Utilisez le clavier pour piloter le robot</p></li>
@@ -142,8 +142,8 @@ Dans ce navigateur ouvrez cette page: “<a class="reference external" href="htt
 </section>
 <section id="eme-exercice-le-robot-dans-le-corridor">
 <h2>3ème exercice : le robot dans le corridor<a class="headerlink" href="#eme-exercice-le-robot-dans-le-corridor" title="Lien vers cette rubrique"></a></h2>
-<p>Créer un nouveau dossier <cite>~/rl/mujoco/workspace/t02_robot_in_corridor</cite>
-Dans ce dossier, créer un nouveau fichier <cite>t02_4_wheels_robot_in_corridor_NOM_Prenom.py</cite>.</p>
+<p>Créer un nouveau dossier <code class="docutils literal notranslate"><span class="pre">~/workspace/t02_robot_in_corridor</span></code>
+Dans ce dossier, créer un nouveau fichier <code class="docutils literal notranslate"><span class="pre">t02_4_wheels_robot_in_corridor_NOM_Prenom.py</span></code>.</p>
 <ol class="arabic simple">
 <li><p>Faites en sorte que le robot de l’exercice 2 puisse se déplacer dans le couloir de l’exercice 1.</p></li>
 <li><p>Créer un film de 30 secondes en utilisant une caméra qui suit le robot (voir le 1er tutorial pour les détails sur la création de film et de caméra dynamique).</p></li>
