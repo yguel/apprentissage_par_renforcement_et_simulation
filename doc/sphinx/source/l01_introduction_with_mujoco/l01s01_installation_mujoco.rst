@@ -271,3 +271,15 @@ vous pouvez exécuter la commande suivante dans un terminal qui place le fichier
 .. code-block:: bash
 
    mv ~/Downloads/test_mujoco_gl.py ~/workspace/examples/ && cd ~/workspace/examples && python3 test_mujoco_gl.py
+
+
+==========================================================
+Travailler avec un éditeur de code depuis la machine hôte
+==========================================================
+
+Si vous souhaitez travailler avec votre éditeur de code préféré sur votre machine hôte (par exemple VSCode, PyCharm, etc..), il vous suffit d'ouvrir:
+
+* le dossier ``~/rl/mujoco/workspace`` si vous avez un workspace persistant.
+* le dossier ``/tmp/rl/mujoco/workspace`` si vous avez un workspace temporaire.
+
+vous verrez alors tous les fichiers que vous créez/modifiez depuis votre éditeur de code préféré sur votre machine hôte de manière synchronisée dans le docker et inversement.
