@@ -63,6 +63,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="l01s00_index.html">Introduction avec MuJoCo</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Installation d’un environnement MuJoCo</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#premieres-verifications-de-l-installation">Premières vérifications de l’installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#travailler-avec-un-editeur-de-code-depuis-la-machine-hote">Travailler avec un éditeur de code depuis la machine hôte</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="l01s02_corridor_101.html">Pratiquons avec MuJoCo et l’environnement corridor</a></li>
@@ -347,6 +348,15 @@ Le navigateur devrait normalement être ouvert à la page suivante: “<a class=
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mv<span class="w"> </span>~/Downloads/test_mujoco_gl.py<span class="w"> </span>~/workspace/examples/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/workspace/examples<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>python3<span class="w"> </span>test_mujoco_gl.py
 </pre></div>
 </div>
+</section>
+<section id="travailler-avec-un-editeur-de-code-depuis-la-machine-hote">
+<h2>Travailler avec un éditeur de code depuis la machine hôte<a class="headerlink" href="#travailler-avec-un-editeur-de-code-depuis-la-machine-hote" title="Lien vers cette rubrique"></a></h2>
+<p>Si vous souhaitez travailler avec votre éditeur de code préféré sur votre machine hôte (par exemple VSCode, PyCharm, etc..), il vous suffit d’ouvrir:</p>
+<ul class="simple">
+<li><p>le dossier <code class="docutils literal notranslate"><span class="pre">~/rl/mujoco/workspace</span></code> si vous avez un workspace persistant.</p></li>
+<li><p>le dossier <code class="docutils literal notranslate"><span class="pre">/tmp/rl/mujoco/workspace</span></code> si vous avez un workspace temporaire.</p></li>
+</ul>
+<p>vous verrez alors tous les fichiers que vous créez/modifiez depuis votre éditeur de code préféré sur votre machine hôte de manière synchronisée dans le docker et inversement.</p>
 </section>
 </section>
 
