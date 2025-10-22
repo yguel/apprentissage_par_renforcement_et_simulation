@@ -139,6 +139,45 @@ Docker pour Linux (machines de la salle de cours)</label><div class="sd-tab-cont
 </div>
 </li>
 </ol>
+<p>Quand vous avez fini votre session de travail, vous devez fermer le docker proprement en utilisant <code class="docutils literal notranslate"><span class="pre">CTRL+C</span></code> dans le terminal où le script a été lancé.</p>
+<p>Le script est codé de telle sorte que si vous ne pouvez pas avoir votre répertoire de travail (workspace) persistant (c’est-à-dire que docker ne peut pas monter lier un dossier à l’intérieur de votre répertoire HOME à un volume docker), un workspace temporaire sera créé dans /tmp/rl/mujoco/workspace. Quand vous fermer la session docker avec <code class="docutils literal notranslate"><span class="pre">CTRL+C</span></code>, alors le script fera automatiquement une sauvegarde de ce workspace temporaire dans le dossier que vous avez indiqué dans la variable d’environnement <code class="docutils literal notranslate"><span class="pre">BACKUP_TARGET_DIR</span></code> (par défaut <code class="docutils literal notranslate"><span class="pre">$HOME/rl/docker_snapshots/mujoco_snapshots</span></code>). <br>
+Cette configuration n’est pas idéale, mais elle se rencontre fréquemment sur des machines de l’école ou de l’université et en entreprise où les droits d’accès du daemon docker sont limités. <br>
+Dans ce cas lorsque vous souhaitez reprendre votre travail, il vous suffira de restaurer votre workspace en décompressant la dernière sauvegarde faite dans le dossier <code class="docutils literal notranslate"><span class="pre">$HOME/rl/docker_snapshots/mujoco_snapshots</span></code> dans le dossier <code class="docutils literal notranslate"><span class="pre">/tmp/rl/mujoco/workspace</span></code>.
+<br>
+Si vous avez un doute sur le type de workspace que vous utilisez (temporaire ou persistant), vous pouvez vérifier dans le terminal où le script a été lancé, au début de la session docker, un message vous indique quel type de workspace est utilisé.</p>
+<p>Exemple d’un workspace temporaire:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">================================</span>
+MuJoCo<span class="w"> </span>Desktop<span class="w"> </span>Environment<span class="w"> </span>Ready!
+<span class="o">================================</span>
+Access<span class="w"> </span>via:
+<span class="w">   </span>Desktop:<span class="w"> </span>http://localhost:6080
+<span class="w">   </span>Jupyter:<span class="w"> </span>http://localhost:8888
+<span class="w">   </span>VNC<span class="w"> </span>Client:<span class="w"> </span>localhost:5901
+<span class="w">   </span>Security:<span class="w"> </span>No<span class="w"> </span>password<span class="w"> </span><span class="o">(</span>safe<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">local</span><span class="w"> </span>development<span class="o">)</span>
+
+Workspace<span class="w"> </span>folder:
+<span class="hll"><span class="w">   </span>Host:<span class="w"> </span>Temporary:<span class="w"> </span>/tmp/rl/mujoco<span class="w"> </span><span class="o">(</span>will<span class="w"> </span>be<span class="w"> </span>backed<span class="w"> </span>up<span class="w"> </span>on<span class="w"> </span><span class="nb">exit</span><span class="o">)</span>
+</span><span class="w">   </span>Container:<span class="w"> </span>/home/student/workspace
+<span class="hll"><span class="w">   </span>⚠️<span class="w">  </span>Using<span class="w"> </span>temporary<span class="w"> </span>workspace<span class="w"> </span>-<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>backed<span class="w"> </span>up<span class="w"> </span>on<span class="w"> </span><span class="nb">exit</span><span class="w"> </span>to:<span class="w"> </span>/home/testuser/rl/docker_snapshots/mujoco_snapshots
+</span><span class="o">================================</span>
+</pre></div>
+</div>
+<p>Exemple d’un workspace persistant:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">================================</span>
+MuJoCo<span class="w"> </span>Desktop<span class="w"> </span>Environment<span class="w"> </span>Ready!
+<span class="o">================================</span>
+Access<span class="w"> </span>via:
+<span class="w">   </span>Desktop:<span class="w"> </span>http://localhost:6080
+<span class="w">   </span>Jupyter:<span class="w"> </span>http://localhost:8888
+<span class="w">   </span>VNC<span class="w"> </span>Client:<span class="w"> </span>localhost:5901
+<span class="w">   </span>Security:<span class="w"> </span>No<span class="w"> </span>password<span class="w"> </span><span class="o">(</span>safe<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">local</span><span class="w"> </span>development<span class="o">)</span>
+
+Workspace<span class="w"> </span>folder:
+<span class="hll"><span class="w">   </span>Host:<span class="w"> </span>Persistent:<span class="w"> </span>/home/&lt;username&gt;/rl/mujoco
+</span><span class="w">   </span>Container:<span class="w"> </span>/home/student/workspace
+<span class="o">================================</span>
+</pre></div>
+</div>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Si vous rencontrez des problèmes</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">

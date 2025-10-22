@@ -40,6 +40,63 @@ Vous pouvez suivre les instructions ci-dessous en fonction de votre système d'e
 
             cd ~/rl/mujoco && ./start.sh
 
+      Quand vous avez fini votre session de travail, vous devez fermer le docker proprement en utilisant ``CTRL+C`` dans le terminal où le script a été lancé.
+
+      Le script est codé de telle sorte que si vous ne pouvez pas avoir votre répertoire de travail (workspace) persistant (c'est-à-dire que docker ne peut pas monter lier un dossier à l'intérieur de votre répertoire HOME à un volume docker), un workspace temporaire sera créé dans /tmp/rl/mujoco/workspace. Quand vous fermer la session docker avec ``CTRL+C``, alors le script fera automatiquement une sauvegarde de ce workspace temporaire dans le dossier que vous avez indiqué dans la variable d'environnement ``BACKUP_TARGET_DIR`` (par défaut ``$HOME/rl/docker_snapshots/mujoco_snapshots``). |br|
+      Cette configuration n'est pas idéale, mais elle se rencontre fréquemment sur des machines de l'école ou de l'université et en entreprise où les droits d'accès du daemon docker sont limités. |br|
+      Dans ce cas lorsque vous souhaitez reprendre votre travail, il vous suffira de restaurer votre workspace en décompressant la dernière sauvegarde faite dans le dossier ``$HOME/rl/docker_snapshots/mujoco_snapshots`` dans le dossier ``/tmp/rl/mujoco/workspace``.
+      |br|
+      Si vous avez un doute sur le type de workspace que vous utilisez (temporaire ou persistant), vous pouvez vérifier dans le terminal où le script a été lancé, au début de la session docker, un message vous indique quel type de workspace est utilisé.
+
+      Exemple d'un workspace temporaire:
+
+      .. code-block:: bash
+         :emphasize-lines: 11,13
+
+         ================================
+         MuJoCo Desktop Environment Ready!
+         ================================
+         Access via:
+            Desktop: http://localhost:6080
+            Jupyter: http://localhost:8888
+            VNC Client: localhost:5901
+            Security: No password (safe for local development)
+
+         Workspace folder:
+            Host: Temporary: /tmp/rl/mujoco (will be backed up on exit)
+            Container: /home/student/workspace
+            ⚠️  Using temporary workspace - will be backed up on exit to: /home/testuser/rl/docker_snapshots/mujoco_snapshots
+         ================================
+
+      Exemple d'un workspace persistant:
+      
+      .. code-block:: bash
+         :emphasize-lines: 11
+
+         ================================
+         MuJoCo Desktop Environment Ready!
+         ================================
+         Access via:
+            Desktop: http://localhost:6080
+            Jupyter: http://localhost:8888
+            VNC Client: localhost:5901
+            Security: No password (safe for local development)
+
+         Workspace folder:
+            Host: Persistent: /home/<username>/rl/mujoco
+            Container: /home/student/workspace
+         ================================
+
+         
+
+      .. Dans ce cas lorsque vous souhaitez reprendre votre travail, il vous suffira de restaurer votre workspace en utilisant le :download:`script de restauration automatique <resources/scripts/restore_rl_env.py>`:
+
+      ..    .. code-block:: bash
+
+      ..       ./restore_rl_env.py
+
+      .. qui par défaut restaurera la dernière sauvegarde faite dans le dossier ``$HOME/rl/docker_snapshots/mujoco_snapshots``.
+
       .. dropdown:: Si vous rencontrez des problèmes
 
          Si vous rencontrez des problèmes, voyez les paramètres avancés avec la commande help:
