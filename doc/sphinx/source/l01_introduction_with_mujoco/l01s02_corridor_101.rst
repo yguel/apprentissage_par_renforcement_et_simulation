@@ -16,6 +16,7 @@ Télécharger les fichiers suivants dans le dossier ``~/workspace/t00_corridor``
    mkdir -p ~/workspace/t00_corridor && cd ~/workspace/t00_corridor
 
 #. :download:`corridor_3x100.xml <resources/mujoco_python/corridor_101/corridor_3x100.xml>`
+#. :download:`corridor_3x100_no_full_hole_or_bump.xml <resources/mujoco_python/corridor_101/corridor_3x100_no_full_hole_or_bump.xml>` un couloir sans trou ni bosse traversant toute la largeur (plus facile pour débuter le pilotage)
 #. :download:`t00_corridor.py <resources/mujoco_python/corridor_101/t00_corridor.py>`
 
 Ouvrez le fichier ``t00_corridor.py`` et complétez le code pour réaliser les 3 exercices suivants:
