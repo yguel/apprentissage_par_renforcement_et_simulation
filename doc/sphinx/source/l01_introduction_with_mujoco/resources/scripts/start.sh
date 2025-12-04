@@ -392,20 +392,18 @@ INSTALL_EOF
                             then
                                 >&2 echo ""
                                 >&2 echo -e "${GREEN}✅ NVIDIA Container Toolkit installed successfully!${NC}"
-                                >&2 echo "   Checking if GPU support is now available..."
-                                sleep 2
+                                >&2 echo "   Docker daemon restarted, verifying GPU support..."
+                                sleep 3
                                 
-                                # Check again after installation
-                                if docker info 2>/dev/null | grep -q "nvidia"; then
+                                # Re-check if GPU support is now available after Docker restart
+                                if docker run --rm --gpus all alpine:latest echo "GPU test" >/dev/null 2>&1; then
                                     cmd="$cmd --gpus all -e NVIDIA_VISIBLE_DEVICES=all"
-                                    >&2 echo -e "${GREEN}✅ GPU acceleration enabled!${NC}"
-                                    >&2 echo -e "${GREEN}   → PyTorch CUDA will be available${NC}"
+                                    >&2 echo -e "${GREEN}✅ GPU acceleration is now enabled!${NC}"
+                                    >&2 echo -e "${GREEN}   → PyTorch CUDA will be available for training${NC}"
                                 else
-                                    >&2 echo -e "${RED}⚠️  Installation succeeded but Docker may need manual restart${NC}"
-                                    >&2 echo -e "${YELLOW}   Please try: sudo systemctl restart docker${NC}"
-                                    >&2 echo -e "${YELLOW}   Then run this script again${NC}"
-                                    >&2 echo ""
-                                    >&2 echo "   Continuing with CPU-only mode for now..."
+                                    >&2 echo -e "${YELLOW}⚠️  GPU test still failing after installation${NC}"
+                                    >&2 echo -e "${YELLOW}   This might resolve after a system reboot${NC}"
+                                    >&2 echo -e "${YELLOW}   Continuing with CPU-only mode for now...${NC}"
                                     >&2 echo -e "${RED}   → PyTorch will use CPU (slower training)${NC}"
                                 fi
                             else
@@ -518,24 +516,20 @@ if docker images --format "table {{.Repository}}:{{.Tag}}" | grep -q "^$IMAGE_NA
         echo "🏠 LOCAL MODE: Using local image without remote checks"
         echo "   (Remote version checking skipped)"
     else
-        # Get local image digest/ID
-        LOCAL_DIGEST=$(docker images --no-trunc --quiet "$IMAGE_NAME" 2>/dev/null)
-        
-        # Try to get remote image digest (without pulling)
+        # Try to get remote manifest digest (without pulling)
         echo "🔍 Comparing with remote image..."
-        if REMOTE_DIGEST=$(docker manifest inspect "$IMAGE_NAME" 2>/dev/null | python3 -c "import sys, json; print(json.load(sys.stdin)['config']['digest'])" 2>/dev/null); then
-            # Get the actual local manifest digest - if RepoDigests is empty, use image ID
-            LOCAL_MANIFEST_DIGEST=$(docker image inspect "$IMAGE_NAME" --format='{{index .RepoDigests 0}}' 2>/dev/null | cut -d'@' -f2)
-            if [ -z "$LOCAL_MANIFEST_DIGEST" ]; then
-                # No RepoDigests means locally built image, use the image ID instead
-                LOCAL_MANIFEST_DIGEST=$(docker image inspect "$IMAGE_NAME" --format='{{.Id}}' 2>/dev/null)
-            fi
+        # Get remote image ID from manifest
+        if REMOTE_IMAGE_ID=$(docker manifest inspect "$IMAGE_NAME" 2>/dev/null | python3 -c "import sys, json; print(json.load(sys.stdin)['config']['digest'])" 2>/dev/null); then
+            # Get local image ID
+            LOCAL_IMAGE_ID=$(docker image inspect "$IMAGE_NAME" --format='{{.Id}}' 2>/dev/null)
             
-            if [ -n "$LOCAL_MANIFEST_DIGEST" ] && [ "$LOCAL_MANIFEST_DIGEST" = "$REMOTE_DIGEST" ]; then
+            if [ -n "$LOCAL_IMAGE_ID" ] && [ "$LOCAL_IMAGE_ID" = "$REMOTE_IMAGE_ID" ]; then
                 echo "✅ Local image is up-to-date with remote"
-                echo "   (Will NOT pull from Docker Hub)"
+                echo "   (Image ID: ${LOCAL_IMAGE_ID:0:19}...)"
             else
                 echo "📦 Local image differs from remote, pulling latest version..."
+                echo "   Local:  ${LOCAL_IMAGE_ID:0:19}..."
+                echo "   Remote: ${REMOTE_IMAGE_ID:0:19}..."
                 if docker pull "$IMAGE_NAME"; then
                     echo "✅ Successfully updated image from Docker Hub"
                 else
