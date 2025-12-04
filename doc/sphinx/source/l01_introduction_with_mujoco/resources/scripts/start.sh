@@ -345,16 +345,23 @@ build_docker_command() {
             cmd="$cmd --device=/dev/dri"
         fi
         # Check if NVIDIA runtime is actually available in Docker before using it
+        # Check if NVIDIA runtime or modern --gpus flag is available in Docker
         if command -v nvidia-smi >/dev/null 2>&1 && nvidia-smi >/dev/null 2>&1; then
-            if docker info 2>/dev/null | grep -q "nvidia"; then
+            # Prefer the modern --gpus flag if supported by this Docker
+            if docker run --help 2>/dev/null | grep -q -- '--gpus'; then
+                cmd="$cmd --gpus all -e NVIDIA_VISIBLE_DEVICES=all"
+                >&2 echo -e "${GREEN}✅ Using Docker --gpus all for GPU acceleration${NC}"
+            elif docker info 2>/dev/null | grep -q "nvidia"; then
+                # Fall back to legacy runtime if it's available
                 cmd="$cmd --runtime=nvidia -e NVIDIA_VISIBLE_DEVICES=all"
+                >&2 echo -e "${YELLOW}⚠️  Using legacy --runtime=nvidia (deprecated) for GPU acceleration${NC}"
             else
                 >&2 echo ""
-                >&2 echo -e "${YELLOW}╔═══════════════════════════════════════════════════════════════════╗${NC}"
-                >&2 echo -e "${YELLOW}║  ⚠️  NVIDIA GPU detected but Docker NVIDIA runtime not configured ║${NC}"
-                >&2 echo -e "${YELLOW}╚═══════════════════════════════════════════════════════════════════╝${NC}"
+                >&2 echo -e "${RED}╔═══════════════════════════════════════════════════════════════════╗${NC}"
+                >&2 echo -e "${RED}║  ⚠️  NVIDIA GPU detected but Docker NVIDIA runtime not configured ║${NC}"
+                >&2 echo -e "${RED}╚═══════════════════════════════════════════════════════════════════╝${NC}"
                 >&2 echo ""
-                >&2 echo -e "${YELLOW}To install NVIDIA Container Toolkit manually, run:${NC}"
+                >&2 echo -e "${YELLOW}To install NVIDIA Container Toolkit, run:${NC}"
                 >&2 echo ""
                 >&2 echo "  # For Ubuntu/Debian:"
                 >&2 echo "  curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg"
@@ -368,7 +375,6 @@ build_docker_command() {
                 >&2 echo ""
                 >&2 echo -e "${YELLOW}To uninstall NVIDIA Container Toolkit (if needed):${NC}"
                 >&2 echo ""
-                >&2 echo "  # For Ubuntu/Debian:"
                 >&2 echo "  sudo apt-get remove --purge -y nvidia-container-toolkit"
                 >&2 echo "  sudo apt-get autoremove -y"
                 >&2 echo "  sudo rm -f /etc/apt/sources.list.d/nvidia-container-toolkit.list"
