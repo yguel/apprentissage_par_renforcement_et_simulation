@@ -12,6 +12,7 @@ CUSTOM_RAM_VALUE=""
 VNC_RESOLUTION="1920x1080"
 VNC_QUALITY="high"
 NO_GPU_MODE=false
+DEBUG_MODE=false
 
 while [[ $# -gt 0 ]]; do
     case $1 in
@@ -54,6 +55,11 @@ while [[ $# -gt 0 ]]; do
                 exit 1
             fi
             ;;
+        --debug)
+            DEBUG_MODE=true
+            set -x
+            shift
+            ;;
         -h|--help)
             echo "Usage: $0 [OPTIONS]"
             echo ""
@@ -64,6 +70,7 @@ while [[ $# -gt 0 ]]; do
             echo "  --ram SIZE        Use specific memory amount (e.g., --ram 1g, --ram 512m)"
             echo "  --resolution WxH  Set VNC resolution (default: 1920x1080)"
             echo "  --quality LEVEL   Set VNC quality: high, medium, low (default: high)"
+            echo "  --debug           Enable debug mode with verbose output"
             echo "  -h, --help        Show this help message"
             echo ""
             echo "Memory allocation:"
@@ -379,7 +386,7 @@ build_docker_command() {
                             >&2 echo "🔧 Installing NVIDIA Container Toolkit..."
                             >&2 echo "   (This requires sudo privileges)"
                             
-                            if sudo bash <<'INSTALL_EOF' 2>&1 | sed 's/^/      /'
+                            if sudo bash <<'INSTALL_EOF' >&2
 curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg
 curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list | \
     sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
@@ -395,14 +402,59 @@ INSTALL_EOF
                                 >&2 echo "   Docker daemon restarted, verifying GPU support..."
                                 sleep 3
                                 
+                                # Debug: Show Docker daemon status
+                                if [ "$DEBUG_MODE" = true ]; then
+                                    >&2 echo ""
+                                    >&2 echo "=== DEBUG: Docker daemon status ==="
+                                    systemctl status docker --no-pager | head -20 2>&1 | sed 's/^/   /' >&2 || true
+                                    >&2 echo ""
+                                    >&2 echo "=== DEBUG: Docker info (GPU section) ==="
+                                    docker info 2>&1 | grep -A 10 -i runtime | sed 's/^/   /' >&2 || true
+                                    >&2 echo ""
+                                fi
+                                
                                 # Re-check if GPU support is now available after Docker restart
-                                if docker run --rm --gpus all alpine:latest echo "GPU test" >/dev/null 2>&1; then
+                                >&2 echo "   Testing: docker run --rm --gpus all alpine:latest echo 'GPU test'"
+                                if [ "$DEBUG_MODE" = true ]; then
+                                    # In debug mode, show the full output
+                                    if docker run --rm --gpus all alpine:latest echo "GPU test" 2>&1 | sed 's/^/   /' >&2; then
+                                        GPU_TEST_PASSED=true
+                                    else
+                                        GPU_TEST_PASSED=false
+                                    fi
+                                else
+                                    # Normal mode, silent test
+                                    if docker run --rm --gpus all alpine:latest echo "GPU test" >/dev/null 2>&1; then
+                                        GPU_TEST_PASSED=true
+                                    else
+                                        GPU_TEST_PASSED=false
+                                    fi
+                                fi
+                                
+                                if [ "$GPU_TEST_PASSED" = true ]; then
                                     cmd="$cmd --gpus all -e NVIDIA_VISIBLE_DEVICES=all"
                                     >&2 echo -e "${GREEN}✅ GPU acceleration is now enabled!${NC}"
                                     >&2 echo -e "${GREEN}   → PyTorch CUDA will be available for training${NC}"
                                 else
-                                    >&2 echo -e "${YELLOW}⚠️  GPU test still failing after installation${NC}"
-                                    >&2 echo -e "${YELLOW}   This might resolve after a system reboot${NC}"
+                                    >&2 echo -e "${RED}❌ GPU test still failing after installation${NC}"
+                                    if [ "$DEBUG_MODE" = true ]; then
+                                        >&2 echo ""
+                                        >&2 echo "=== DEBUG: Checking nvidia-smi ==="
+                                        nvidia-smi 2>&1 | sed 's/^/   /' >&2 || >&2 echo "   nvidia-smi failed"
+                                        >&2 echo ""
+                                        >&2 echo "=== DEBUG: Checking nvidia-ctk ==="
+                                        which nvidia-ctk 2>&1 | sed 's/^/   /' >&2 || >&2 echo "   nvidia-ctk not found"
+                                        nvidia-ctk --version 2>&1 | sed 's/^/   /' >&2 || true
+                                        >&2 echo ""
+                                        >&2 echo "=== DEBUG: Docker runtime config ==="
+                                        cat /etc/docker/daemon.json 2>&1 | sed 's/^/   /' >&2 || >&2 echo "   No daemon.json found"
+                                        >&2 echo ""
+                                    fi
+                                    >&2 echo -e "${YELLOW}   Possible causes:${NC}"
+                                    >&2 echo "   1. Docker daemon needs more time to restart (wait 30s and try again)"
+                                    >&2 echo "   2. User needs to log out and back in (for group permissions)"
+                                    >&2 echo "   3. System needs a reboot (kernel modules)"
+                                    >&2 echo ""
                                     >&2 echo -e "${YELLOW}   Continuing with CPU-only mode for now...${NC}"
                                     >&2 echo -e "${RED}   → PyTorch will use CPU (slower training)${NC}"
                                 fi
@@ -632,6 +684,15 @@ fi
 echo ""
 echo "⏳ Starting services (this may take 30 seconds)..."
 echo "=============================================="
+
+# Debug: Show the full Docker command
+if [ "$DEBUG_MODE" = true ]; then
+    echo ""
+    echo "=== DEBUG: Full Docker command ==="
+    echo "$DOCKER_CMD" | sed 's/ -/\n  -/g'
+    echo "=================================="
+    echo ""
+fi
 
 # Function for cleanup on exit
 cleanup_on_exit() {
