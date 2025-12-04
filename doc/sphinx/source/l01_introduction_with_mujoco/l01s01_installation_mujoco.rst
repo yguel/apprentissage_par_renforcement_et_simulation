@@ -32,7 +32,7 @@ Vous pouvez suivre les instructions ci-dessous en fonction de votre système d'e
 
          .. code-block:: bash
 
-           mkdir -p ~/rl/mujoco && cd ~/rl/mujoco && wget -O start.sh https://raw.githubusercontent.com/yguel/docker_mujoco_rl_101/main/start.sh && chmod +x start.sh
+           mkdir -p ~/rl/mujoco && cd ~/rl/mujoco && rm -f start.sh && wget -O start.sh https://raw.githubusercontent.com/yguel/docker_mujoco_rl_101/main/start.sh && chmod +x start.sh
 
       #. Lancez le script start.sh
 
