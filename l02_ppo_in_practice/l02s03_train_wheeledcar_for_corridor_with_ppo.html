@@ -1,0 +1,191 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entraîner l’algorithme PPO à piloter le robot dans le couloir &mdash; Documentation Apprentissage par Renforcement et Simulation 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=a332d530" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=05dadb3a"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=30646c52"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=5194a9fd"></script>
+      <script src="../_static/translations.js?v=e6b791cb"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="AgileRL pour cartpole avec PPO" href="l02s01_agilerl_and_ppo.html" />
+    <link rel="prev" title="Projet: mise en pratique de PPO" href="l02s00_index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Apprentissage par Renforcement et Simulation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Apprentissage par Renforcement et Simulation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../l01_introduction_with_mujoco/l01s00_index.html">Introduction avec MuJoCo</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="l02s00_index.html">Projet: mise en pratique de PPO</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Entraîner l’algorithme PPO à piloter le robot dans le couloir</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#travail-a-effectuer">Travail à effectuer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#note-programmation-modulaire-en-python">Note: Programmation modulaire en python</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="l02s01_agilerl_and_ppo.html">AgileRL pour cartpole avec PPO</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Apprentissage par Renforcement et Simulation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="l02s00_index.html">Projet: mise en pratique de PPO</a></li>
+      <li class="breadcrumb-item active">Entraîner l’algorithme PPO à piloter le robot dans le couloir</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/l02_ppo_in_practice/l02s03_train_wheeledcar_for_corridor_with_ppo.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="entrainer-l-algorithme-ppo-a-piloter-le-robot-dans-le-couloir">
+<h1>Entraîner l’algorithme PPO à piloter le robot dans le couloir<a class="headerlink" href="#entrainer-l-algorithme-ppo-a-piloter-le-robot-dans-le-couloir" title="Lien vers cette rubrique"></a></h1>
+<section id="travail-a-effectuer">
+<h2>Travail à effectuer<a class="headerlink" href="#travail-a-effectuer" title="Lien vers cette rubrique"></a></h2>
+<p>Pour ce projet, il faut entraîner un agent PPO à piloter un robot à roues différentielles dans un couloir en utilisant le simulateur MuJoCo. Le robot doit être capable d’avancer dans le couloir en évitant les obstacles (murs, bosses, trous) qui peuvent se trouver sur son chemin.
+Les étapes à réaliser sont les suivantes:</p>
+<ol class="arabic">
+<li><p>Il faut créer un environnement d’apprentissage par renforcement de type Gym en utilisant le simulateur MuJoCo et en particulier définir les fonctions <code class="docutils literal notranslate"><span class="pre">step</span></code> et <code class="docutils literal notranslate"><span class="pre">reset</span></code> de l’environnement.
+Cet environnement pourra être défini dans un fichier <code class="docutils literal notranslate"><span class="pre">corridor_env.py</span></code>.
+Plusieurs options sont possibles pour définir les actions et les observations de l’environnement.
+Le choix le plus simple est définir:</p>
+<ul>
+<li><p>les actions comme étant un couple (v, omega) où v est la vitesse linéaire du robot et omega sa vitesse angulaire. Pour cela il faudra convertir (v, omega) en vitesses des roues gauches et droites du robot.</p></li>
+<li><p>les observations comme étant:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>la position (x,y) et l’orientation (theta) du robot dans le couloir.</p></li>
+<li><p>une carte discrétisée du couloir autour du robot (par exemple une grille 24x24 où chaque cellule indique la présence ou non d’un mur, d’une bosse ou d’un trou pour une discrétisation de 0.25cm).</p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p>Il faut définir une fonction de récompense adaptée pour entraîner l’agent à piloter le robot dans le couloir. Celle qui sera utilisée dans la fonction <code class="docutils literal notranslate"><span class="pre">step</span></code> de l’environnement.
+Par exemple, on peut définir une récompense positive lorsque le robot avance dans le couloir et une récompense négative lorsqu’il heurte un mur ou une bosse et une récompense très négative lorsqu’il tombe dans un trou.
+On peut aussi définir une récompense négative proportionnelle à la distance entre le robot et les obstacles les plus proches (murs, bosses, trous).</p></li>
+</ul>
+</li>
+<li><p>Il faut ensuite entraîner un agent PPO en utilisant l’environnement défini précédemment en adaptant une implémentation de PPO. Pour cela, on peut utiliser :</p>
+<ul class="simple">
+<li><p>l’implémentation de référence de PPO vue dans le cours issue de la bibliothèque <code class="docutils literal notranslate"><span class="pre">cleanrl</span></code>.</p></li>
+<li><p>l’implémentation de PPO disponible dans la bibliothèque AgileRL.</p></li>
+</ul>
+<p>Pour toutes ces implémentations il existe des exemples d’entraînement d’agents PPO sur des environnements Gym standards (CartPole, Acrobot, etc.) qui pourront être adaptés pour entraîner l’agent dans l’environnement défini précédemment. Tenez également compte de l’utilisation d’une carte qu’on peut assimiler à une image (utilisation de réseaux de neurones convolutifs).</p>
+<p>Créez un script <code class="docutils literal notranslate"><span class="pre">ppo_corridor_train.py</span></code> qui entraîne l’agent PPO dans l’environnement défini précédemment.</p>
+</li>
+<li><p>Une fois l’agent entraîné, il faut évaluer ses performances en le testant dans l’environnement et en visualisant son comportement (par exemple en utilisant la fonction <code class="docutils literal notranslate"><span class="pre">render</span></code> de l’environnement Gym).
+Créez un script <code class="docutils literal notranslate"><span class="pre">ppo_corridor_use.py</span></code> qui teste l’agent PPO entraîné dans l’environnement défini précédemment et visualise son comportement.</p></li>
+</ol>
+</section>
+<section id="note-programmation-modulaire-en-python">
+<h2>Note: Programmation modulaire en python<a class="headerlink" href="#note-programmation-modulaire-en-python" title="Lien vers cette rubrique"></a></h2>
+<p>Pour ce projet, il est recommandé d’adopter une approche de programmation modulaire en python en séparant les différentes parties du code dans des fichiers distincts:</p>
+<ul class="simple">
+<li><p>L’environnement Gym dans un fichier <code class="docutils literal notranslate"><span class="pre">corridor_env.py</span></code>.</p></li>
+<li><p>Le script d’entraînement de l’agent PPO dans un fichier <code class="docutils literal notranslate"><span class="pre">ppo_corridor_train.py</span></code>.</p></li>
+<li><p>Le script de test de l’agent PPO dans un fichier <code class="docutils literal notranslate"><span class="pre">ppo_corridor_use.py</span></code>.</p></li>
+</ul>
+<p>Chaque fichier est importable en python en utilisant la commande <code class="docutils literal notranslate"><span class="pre">import</span></code>.
+Exemple depuis le script <code class="docutils literal notranslate"><span class="pre">ppo_corridor_train.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">corridor_env</span><span class="w"> </span><span class="kn">import</span> <span class="n">CorridorEnv</span> <span class="c1"># importer l&#39;environnement Gym</span>
+</pre></div>
+</div>
+<p>Pour que l’interpréteur python puisse trouver les fichiers à importer, il faut s’assurer que le répertoire courant (celui où se trouvent les scripts) est bien dans la variable d’environnement <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code>.
+Cela peut être fait en lançant le script depuis le répertoire où se trouvent les fichiers ou en ajoutant le répertoire courant au <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> avant de lancer le script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PYTHONPATH</span>:.
+python<span class="w"> </span>ppo_corridor_train.py
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="l02s00_index.html" class="btn btn-neutral float-left" title="Projet: mise en pratique de PPO" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="l02s01_agilerl_and_ppo.html" class="btn btn-neutral float-right" title="AgileRL pour cartpole avec PPO" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Manuel YGUEL.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
