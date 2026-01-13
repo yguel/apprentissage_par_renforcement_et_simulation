@@ -1132,81 +1132,21 @@
     <geom type="box" material="mat_floor" name="floor_flat_1182" size="0.250 0.250 0.025" pos="99.750 0.250 0.025"/>
     <geom type="box" material="mat_floor" name="floor_flat_1183" size="0.250 0.250 0.025" pos="99.750 0.750 0.025"/>
     <geom type="box" material="mat_floor" name="floor_flat_1184" size="0.250 0.250 0.025" pos="99.750 1.250 0.025"/>
-    <geom name="floor_hole_box_0_front" type="box" size="0.010 0.500 1.000" pos="6.005 -0.500 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_0_back" type="box" size="0.010 0.500 1.000" pos="6.495 -0.500 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_0_left" type="box" size="0.250 0.010 1.000" pos="6.250 -0.005 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_0_right" type="box" size="0.250 0.010 1.000" pos="6.250 -0.995 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_0_bottom" type="box" size="0.250 0.500 0.010" pos="6.250 -0.500 -1.970" material="mat_hole"/>
-    <geom name="floor_hole_box_1_front" type="box" size="0.010 0.500 1.000" pos="10.005 0.500 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_1_back" type="box" size="0.010 0.500 1.000" pos="10.495 0.500 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_1_left" type="box" size="0.250 0.010 1.000" pos="10.250 0.995 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_1_right" type="box" size="0.250 0.010 1.000" pos="10.250 0.005 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_1_bottom" type="box" size="0.250 0.500 0.010" pos="10.250 0.500 -1.970" material="mat_hole"/>
-    <geom name="floor_hole_box_2_front" type="box" size="0.010 0.500 1.000" pos="14.005 1.000 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_2_back" type="box" size="0.010 0.500 1.000" pos="14.495 1.000 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_2_left" type="box" size="0.250 0.010 1.000" pos="14.250 1.495 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_2_right" type="box" size="0.250 0.010 1.000" pos="14.250 0.505 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_2_bottom" type="box" size="0.250 0.500 0.010" pos="14.250 1.000 -1.970" material="mat_hole"/>
-    <geom name="floor_hole_box_3_front" type="box" size="0.010 0.500 1.000" pos="18.005 -0.500 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_3_back" type="box" size="0.010 0.500 1.000" pos="18.495 -0.500 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_3_left" type="box" size="0.250 0.010 1.000" pos="18.250 -0.005 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_3_right" type="box" size="0.250 0.010 1.000" pos="18.250 -0.995 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_3_bottom" type="box" size="0.250 0.500 0.010" pos="18.250 -0.500 -1.970" material="mat_hole"/>
-    <geom name="floor_hole_box_4_front" type="box" size="0.010 0.500 1.000" pos="22.005 0.500 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_4_back" type="box" size="0.010 0.500 1.000" pos="22.495 0.500 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_4_left" type="box" size="0.250 0.010 1.000" pos="22.250 0.995 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_4_right" type="box" size="0.250 0.010 1.000" pos="22.250 0.005 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_4_bottom" type="box" size="0.250 0.500 0.010" pos="22.250 0.500 -1.970" material="mat_hole"/>
-    <geom name="floor_hole_box_5_front" type="box" size="0.010 0.500 1.000" pos="26.005 1.000 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_5_back" type="box" size="0.010 0.500 1.000" pos="26.495 1.000 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_5_left" type="box" size="0.250 0.010 1.000" pos="26.250 1.495 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_5_right" type="box" size="0.250 0.010 1.000" pos="26.250 0.505 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_5_bottom" type="box" size="0.250 0.500 0.010" pos="26.250 1.000 -1.970" material="mat_hole"/>
-    <geom name="floor_hole_box_6_front" type="box" size="0.010 0.500 1.000" pos="34.005 -0.500 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_6_back" type="box" size="0.010 0.500 1.000" pos="34.495 -0.500 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_6_left" type="box" size="0.250 0.010 1.000" pos="34.250 -0.005 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_6_right" type="box" size="0.250 0.010 1.000" pos="34.250 -0.995 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_6_bottom" type="box" size="0.250 0.500 0.010" pos="34.250 -0.500 -1.970" material="mat_hole"/>
-    <geom name="floor_hole_box_7_front" type="box" size="0.010 0.500 1.000" pos="38.005 0.500 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_7_back" type="box" size="0.010 0.500 1.000" pos="38.495 0.500 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_7_left" type="box" size="0.250 0.010 1.000" pos="38.250 0.995 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_7_right" type="box" size="0.250 0.010 1.000" pos="38.250 0.005 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_7_bottom" type="box" size="0.250 0.500 0.010" pos="38.250 0.500 -1.970" material="mat_hole"/>
-    <geom name="floor_hole_box_8_front" type="box" size="0.010 0.500 1.000" pos="42.005 1.000 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_8_back" type="box" size="0.010 0.500 1.000" pos="42.495 1.000 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_8_left" type="box" size="0.250 0.010 1.000" pos="42.250 1.495 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_8_right" type="box" size="0.250 0.010 1.000" pos="42.250 0.505 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_8_bottom" type="box" size="0.250 0.500 0.010" pos="42.250 1.000 -1.970" material="mat_hole"/>
-    <geom name="floor_hole_box_9_front" type="box" size="0.010 0.500 1.000" pos="50.005 -0.500 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_9_back" type="box" size="0.010 0.500 1.000" pos="50.495 -0.500 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_9_left" type="box" size="0.250 0.010 1.000" pos="50.250 -0.005 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_9_right" type="box" size="0.250 0.010 1.000" pos="50.250 -0.995 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_9_bottom" type="box" size="0.250 0.500 0.010" pos="50.250 -0.500 -1.970" material="mat_hole"/>
-    <geom name="floor_hole_box_10_front" type="box" size="0.010 0.500 1.000" pos="54.005 0.500 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_10_back" type="box" size="0.010 0.500 1.000" pos="54.495 0.500 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_10_left" type="box" size="0.250 0.010 1.000" pos="54.250 0.995 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_10_right" type="box" size="0.250 0.010 1.000" pos="54.250 0.005 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_10_bottom" type="box" size="0.250 0.500 0.010" pos="54.250 0.500 -1.970" material="mat_hole"/>
-    <geom name="floor_hole_box_11_front" type="box" size="0.010 0.500 1.000" pos="58.005 1.000 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_11_back" type="box" size="0.010 0.500 1.000" pos="58.495 1.000 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_11_left" type="box" size="0.250 0.010 1.000" pos="58.250 1.495 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_11_right" type="box" size="0.250 0.010 1.000" pos="58.250 0.505 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_11_bottom" type="box" size="0.250 0.500 0.010" pos="58.250 1.000 -1.970" material="mat_hole"/>
-    <geom name="floor_hole_box_12_front" type="box" size="0.010 0.500 1.000" pos="70.005 -0.500 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_12_back" type="box" size="0.010 0.500 1.000" pos="70.495 -0.500 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_12_left" type="box" size="0.250 0.010 1.000" pos="70.250 -0.005 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_12_right" type="box" size="0.250 0.010 1.000" pos="70.250 -0.995 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_12_bottom" type="box" size="0.250 0.500 0.010" pos="70.250 -0.500 -1.970" material="mat_hole"/>
-    <geom name="floor_hole_box_13_front" type="box" size="0.010 0.500 1.000" pos="74.005 0.500 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_13_back" type="box" size="0.010 0.500 1.000" pos="74.495 0.500 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_13_left" type="box" size="0.250 0.010 1.000" pos="74.250 0.995 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_13_right" type="box" size="0.250 0.010 1.000" pos="74.250 0.005 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_13_bottom" type="box" size="0.250 0.500 0.010" pos="74.250 0.500 -1.970" material="mat_hole"/>
-    <geom name="floor_hole_box_14_front" type="box" size="0.010 0.500 1.000" pos="88.005 1.000 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_14_back" type="box" size="0.010 0.500 1.000" pos="88.495 1.000 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_14_left" type="box" size="0.250 0.010 1.000" pos="88.250 1.495 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_14_right" type="box" size="0.250 0.010 1.000" pos="88.250 0.505 -0.975" material="mat_hole"/>
-    <geom name="floor_hole_box_14_bottom" type="box" size="0.250 0.500 0.010" pos="88.250 1.000 -1.970" material="mat_hole"/>
+    <geom name="floor_hole_tile_0" type="box" size="0.250 0.500 0.025" pos="6.250 -0.500 0.025" group="5" contype="0" conaffinity="0" rgba="0.8 0.4 0.2 0.5" />
+    <geom name="floor_hole_tile_1" type="box" size="0.250 0.500 0.025" pos="10.250 0.500 0.025" group="5" contype="0" conaffinity="0" rgba="0.8 0.4 0.2 0.5" />
+    <geom name="floor_hole_tile_2" type="box" size="0.250 0.500 0.025" pos="14.250 1.000 0.025" group="5" contype="0" conaffinity="0" rgba="0.8 0.4 0.2 0.5" />
+    <geom name="floor_hole_tile_3" type="box" size="0.250 0.500 0.025" pos="18.250 -0.500 0.025" group="5" contype="0" conaffinity="0" rgba="0.8 0.4 0.2 0.5" />
+    <geom name="floor_hole_tile_4" type="box" size="0.250 0.500 0.025" pos="22.250 0.500 0.025" group="5" contype="0" conaffinity="0" rgba="0.8 0.4 0.2 0.5" />
+    <geom name="floor_hole_tile_5" type="box" size="0.250 0.500 0.025" pos="26.250 1.000 0.025" group="5" contype="0" conaffinity="0" rgba="0.8 0.4 0.2 0.5" />
+    <geom name="floor_hole_tile_6" type="box" size="0.250 0.500 0.025" pos="34.250 -0.500 0.025" group="5" contype="0" conaffinity="0" rgba="0.8 0.4 0.2 0.5" />
+    <geom name="floor_hole_tile_7" type="box" size="0.250 0.500 0.025" pos="38.250 0.500 0.025" group="5" contype="0" conaffinity="0" rgba="0.8 0.4 0.2 0.5" />
+    <geom name="floor_hole_tile_8" type="box" size="0.250 0.500 0.025" pos="42.250 1.000 0.025" group="5" contype="0" conaffinity="0" rgba="0.8 0.4 0.2 0.5" />
+    <geom name="floor_hole_tile_9" type="box" size="0.250 0.500 0.025" pos="50.250 -0.500 0.025" group="5" contype="0" conaffinity="0" rgba="0.8 0.4 0.2 0.5" />
+    <geom name="floor_hole_tile_10" type="box" size="0.250 0.500 0.025" pos="54.250 0.500 0.025" group="5" contype="0" conaffinity="0" rgba="0.8 0.4 0.2 0.5" />
+    <geom name="floor_hole_tile_11" type="box" size="0.250 0.500 0.025" pos="58.250 1.000 0.025" group="5" contype="0" conaffinity="0" rgba="0.8 0.4 0.2 0.5" />
+    <geom name="floor_hole_tile_12" type="box" size="0.250 0.500 0.025" pos="70.250 -0.500 0.025" group="5" contype="0" conaffinity="0" rgba="0.8 0.4 0.2 0.5" />
+    <geom name="floor_hole_tile_13" type="box" size="0.250 0.500 0.025" pos="74.250 0.500 0.025" group="5" contype="0" conaffinity="0" rgba="0.8 0.4 0.2 0.5" />
+    <geom name="floor_hole_tile_14" type="box" size="0.250 0.500 0.025" pos="88.250 1.000 0.025" group="5" contype="0" conaffinity="0" rgba="0.8 0.4 0.2 0.5" />
     <geom name="floor_bump_15" type="box" material="mat_bump" pos="2.25 -1.25 0.525" size="0.25 0.25 0.5"/>
     <geom name="floor_bump_16" type="box" material="mat_bump" pos="3.25 -0.75 0.525" size="0.25 0.25 0.5"/>
     <geom name="floor_bump_17" type="box" material="mat_bump" pos="5.25 -0.25 0.525" size="0.25 0.25 0.5"/>
