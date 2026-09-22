@@ -62,7 +62,18 @@ Créer un nouveau dossier ``~/workspace/t02_robot_in_corridor``
 Dans ce dossier, créer un nouveau fichier ``t02_4_wheels_robot_in_corridor_NOM_Prenom.py``.
 
 #. Faites en sorte que le robot de l'exercice 2 puisse se déplacer dans le couloir de l'exercice 1.
-#. Créer un film de 30 secondes en utilisant une caméra qui suit le robot (voir le 1er tutorial pour les détails sur la création de film et de caméra dynamique).
-#. Extra bonus pour les mouvements de caméra les plus cinématographiques.
+#. Ajouter un pavé sur le robot représentant une caméra situé au centre de la face avant du robot
+#. Créer une caméra attachée au pavé représentant la caméra du robot
+#. Créer 2 films de 30 secondes en utilisant (prenez au même moment une capture de chaque caméra):
+
+   #. une caméra qui suit le robot (voir le 1er tutorial pour les détails sur la création de film et de caméra dynamique)
+   #. la caméra du robot.
+#. Créer un seul film avec les 2 vidéos mises l'une à côté de l'autre en utilisant la commande suivante:
+
+   .. code-block:: bash
+
+      ffmpeg -i film_robot.mp4 -i film_camera.mp4 -filter_complex "[0:v][1:v]hstack=inputs=2" film_combined.mp4
+
+#. Extra bonus pour les mouvements de la caméra suiveuse et/ou du robot les plus cinématographiques.
 
 Cet exercice est à rendre sur moodle.
