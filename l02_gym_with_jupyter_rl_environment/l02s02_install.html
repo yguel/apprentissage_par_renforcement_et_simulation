@@ -102,19 +102,19 @@ rm<span class="w"> </span>Miniconda3-2024.09.sh
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">Fonction pour lancer facilement conda depuis la console</span><a class="headerlink" href="#id1" title="Lien vers ce code"></a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># &gt; conda3.12 initialize &gt;</span>
-<span class="linenos"> 2</span><span class="c1"># !! Contents within this block are managed by &#39;conda init&#39; !!</span>
+<span class="linenos"> 2</span><span class="c1"># !! Contents within this block are managed by 'conda init' !!</span>
 <span class="linenos"> 3</span><span class="k">function</span><span class="w"> </span>conda312_init<span class="w"> </span><span class="o">{</span>
 <span class="linenos"> 4</span><span class="nb">export</span><span class="w"> </span><span class="nv">CONDA312_PREFIX</span><span class="o">=</span><span class="nv">$HOME</span>/system/python/anaconda/miniconda312
-<span class="linenos"> 5</span><span class="nv">__conda312_setup</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CONDA312_PREFIX</span><span class="si">}</span><span class="s2">/bin/conda&quot;</span><span class="w"> </span><span class="s1">&#39;shell.bash&#39;</span><span class="w"> </span><span class="s1">&#39;hook&#39;</span><span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>/dev/null<span class="k">)</span><span class="s2">&quot;</span>
+<span class="linenos"> 5</span><span class="nv">__conda312_setup</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span><span class="s2">"</span><span class="si">${</span><span class="nv">CONDA312_PREFIX</span><span class="si">}</span><span class="s2">/bin/conda"</span><span class="w"> </span><span class="s1">'shell.bash'</span><span class="w"> </span><span class="s1">'hook'</span><span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>/dev/null<span class="k">)</span><span class="s2">"</span>
 <span class="linenos"> 6</span><span class="nb">export</span><span class="w"> </span><span class="nv">CONDA_PREFIX</span><span class="o">=</span><span class="nv">$CONDA312_PREFIX</span>
 <span class="linenos"> 7</span><span class="nb">export</span><span class="w"> </span><span class="nv">ANACONDA_BIN</span><span class="o">=</span><span class="si">${</span><span class="nv">CONDA_PREFIX</span><span class="si">}</span>/bin
 <span class="linenos"> 8</span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<span class="linenos"> 9</span><span class="w">    </span><span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$__conda312_setup</span><span class="s2">&quot;</span>
+<span class="linenos"> 9</span><span class="w">    </span><span class="nb">eval</span><span class="w"> </span><span class="s2">"</span><span class="nv">$__conda312_setup</span><span class="s2">"</span>
 <span class="linenos">10</span><span class="k">else</span>
-<span class="linenos">11</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CONDA_PREFIX</span><span class="si">}</span><span class="s2">/etc/profile.d/conda.sh&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<span class="linenos">12</span><span class="w">        </span>.<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CONDA_PREFIX</span><span class="si">}</span><span class="s2">/etc/profile.d/conda.sh&quot;</span>
+<span class="linenos">11</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">CONDA_PREFIX</span><span class="si">}</span><span class="s2">/etc/profile.d/conda.sh"</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos">12</span><span class="w">        </span>.<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">CONDA_PREFIX</span><span class="si">}</span><span class="s2">/etc/profile.d/conda.sh"</span>
 <span class="linenos">13</span><span class="w">    </span><span class="k">else</span>
-<span class="linenos">14</span><span class="w">        </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CONDA_PREFIX</span><span class="si">}</span><span class="s2">/miniconda312/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<span class="linenos">14</span><span class="w">        </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">CONDA_PREFIX</span><span class="si">}</span><span class="s2">/miniconda312/bin:</span><span class="nv">$PATH</span><span class="s2">"</span>
 <span class="linenos">15</span><span class="w">    </span><span class="k">fi</span>
 <span class="linenos">16</span><span class="k">fi</span>
 <span class="linenos">17</span><span class="c1">#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/</span>
@@ -132,7 +132,7 @@ conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </
 conda<span class="w"> </span>activate<span class="w"> </span>rltutorials
 conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>jupyterlab
 conda<span class="w"> </span>install<span class="w"> </span>swig
-pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;gymnasium[all]&quot;</span>
+pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"gymnasium[all]"</span>
 pip<span class="w"> </span>install<span class="w"> </span>torch
 </pre></div>
 </div>
@@ -157,7 +157,7 @@ jupyter<span class="w"> </span>lab
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">gymnasium</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gym</span>
 
 <span class="c1"># Initialise the environment</span>
-<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;LunarLander-v3&quot;</span><span class="p">,</span> <span class="n">render_mode</span><span class="o">=</span><span class="s2">&quot;human&quot;</span><span class="p">)</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"LunarLander-v3"</span><span class="p">,</span> <span class="n">render_mode</span><span class="o">=</span><span class="s2">"human"</span><span class="p">)</span>
 
 <span class="c1"># Reset the environment to generate the first observation</span>
 <span class="n">observation</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>

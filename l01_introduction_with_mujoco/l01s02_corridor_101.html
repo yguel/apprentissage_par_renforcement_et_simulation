@@ -147,10 +147,22 @@ Dans ce navigateur ouvrez cette page: “<a class="reference external" href="htt
 <h2>3ème exercice : le robot dans le corridor<a class="headerlink" href="#eme-exercice-le-robot-dans-le-corridor" title="Lien vers cette rubrique"></a></h2>
 <p>Créer un nouveau dossier <code class="docutils literal notranslate"><span class="pre">~/workspace/t02_robot_in_corridor</span></code>
 Dans ce dossier, créer un nouveau fichier <code class="docutils literal notranslate"><span class="pre">t02_4_wheels_robot_in_corridor_NOM_Prenom.py</span></code>.</p>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p>Faites en sorte que le robot de l’exercice 2 puisse se déplacer dans le couloir de l’exercice 1.</p></li>
-<li><p>Créer un film de 30 secondes en utilisant une caméra qui suit le robot (voir le 1er tutorial pour les détails sur la création de film et de caméra dynamique).</p></li>
-<li><p>Extra bonus pour les mouvements de caméra les plus cinématographiques.</p></li>
+<li><p>Ajouter un pavé sur le robot représentant une caméra situé au centre de la face avant du robot</p></li>
+<li><p>Créer une caméra attachée au pavé représentant la caméra du robot</p></li>
+<li><p>Créer 2 films de 30 secondes en utilisant (prenez au même moment une capture de chaque caméra):</p>
+<ol class="arabic simple">
+<li><p>une caméra qui suit le robot (voir le 1er tutorial pour les détails sur la création de film et de caméra dynamique)</p></li>
+<li><p>la caméra du robot.</p></li>
+</ol>
+</li>
+<li><p>Créer un seul film avec les 2 vidéos mises l’une à côté de l’autre en utilisant la commande suivante:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>film_robot.mp4<span class="w"> </span>-i<span class="w"> </span>film_camera.mp4<span class="w"> </span>-filter_complex<span class="w"> </span><span class="s2">"[0:v][1:v]hstack=inputs=2"</span><span class="w"> </span>film_combined.mp4
+</pre></div>
+</div>
+</li>
+<li><p>Extra bonus pour les mouvements de la caméra suiveuse et/ou du robot les plus cinématographiques.</p></li>
 </ol>
 <p>Cet exercice est à rendre sur moodle.</p>
 </section>
