@@ -5,7 +5,7 @@ Tutoriel Deep Q-Learning
 .. toctree::
    :maxdepth: 2
 
-   l03s01_install
+   l03s01_rainbow_is_all_you_need
 .. s02_deep_q_learning
    s03_experience_replay
    s04_target_network
