@@ -1,0 +1,457 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>De DQN à Rainbow (TP 1 h 15) &mdash; Documentation Apprentissage par Renforcement et Simulation 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=a332d530" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=05dadb3a"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=30646c52"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=5194a9fd"></script>
+      <script src="../_static/translations.js?v=e6b791cb"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="Projet: mise en pratique de PPO" href="../l02_ppo_in_practice/l02s00_index.html" />
+    <link rel="prev" title="Tutoriel Deep Q-Learning" href="l03s00_index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Apprentissage par Renforcement et Simulation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Apprentissage par Renforcement et Simulation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../l01_introduction_with_mujoco/l01s00_index.html">Introduction avec MuJoCo</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="l03s00_index.html">Tutoriel Deep Q-Learning</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">De DQN à Rainbow (TP 1 h 15)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#avant-de-commencer">Avant de commencer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#recuperer-le-script-de-lancement">Récupérer le script de lancement</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#lancement">Lancement</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#vos-fichiers">Vos fichiers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#les-9-chapitres">Les 9 chapitres</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deroule-de-la-seance">Déroulé de la séance</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#le-calcul-de-fond">Le calcul de fond</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#questions-a-rendre">Questions à rendre</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#chapitre-01-dqn">Chapitre 01 — DQN</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#chapitre-02-double-dqn">Chapitre 02 — Double DQN</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#chapitre-08-rainbow">Chapitre 08 — Rainbow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#synthese">Synthèse</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#pour-aller-plus-loin">Pour aller plus loin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#depannage">Dépannage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#references">Références</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../l02_ppo_in_practice/l02s00_index.html">Projet: mise en pratique de PPO</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Apprentissage par Renforcement et Simulation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="l03s00_index.html">Tutoriel Deep Q-Learning</a></li>
+      <li class="breadcrumb-item active">De DQN à Rainbow (TP 1 h 15)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/l03_deep_q_learning/l03s01_rainbow_is_all_you_need.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="de-dqn-a-rainbow-tp-1-h-15">
+<span id="l03s01-rainbow-is-all-you-need"></span><h1>De DQN à Rainbow (TP 1 h 15)<a class="headerlink" href="#de-dqn-a-rainbow-tp-1-h-15" title="Lien vers cette rubrique"></a></h1>
+<p>Le tutoriel <a class="reference external" href="https://github.com/Curt-Park/rainbow-is-all-you-need">Rainbow is all you need</a>
+décompose l’algorithme <strong>Rainbow</strong> en neuf chapitres : chacun part du DQN de base et lui
+ajoute <strong>une seule</strong> amélioration, jusqu’à les combiner toutes.</p>
+<p>Chaque chapitre est un notebook autonome qui entraîne un agent sur <code class="docutils literal notranslate"><span class="pre">CartPole-v1</span></code>
+(20 000 pas), trace la courbe d’apprentissage et produit une <strong>vidéo</strong> de la politique
+apprise. Tout est préinstallé dans le docker du cours : vous n’avez rien à installer.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ces notebooks sont écrits avec <a class="reference external" href="https://marimo.io/">marimo</a> et non avec Jupyter.
+Un notebook marimo est un fichier <code class="docutils literal notranslate"><span class="pre">.py</span></code> ordinaire, et il est <strong>réactif</strong> : quand vous
+modifiez une cellule, toutes celles qui en dépendent se ré-exécutent automatiquement.
+Il n’y a donc jamais d’état caché incohérent, mais <strong>changer un hyperparamètre relance
+l’entraînement</strong>. Réfléchissez à votre modification avant de la lancer.</p>
+</div>
+<section id="avant-de-commencer">
+<h2>Avant de commencer<a class="headerlink" href="#avant-de-commencer" title="Lien vers cette rubrique"></a></h2>
+<section id="recuperer-le-script-de-lancement">
+<h3>Récupérer le script de lancement<a class="headerlink" href="#recuperer-le-script-de-lancement" title="Lien vers cette rubrique"></a></h3>
+<p>Ce TP utilise une version du script de lancement qui démarre aussi le serveur de notebooks.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/rl/mujoco<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/rl/mujoco<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>start.sh<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>wget<span class="w"> </span>-O<span class="w"> </span>start.sh<span class="w"> </span>https://raw.githubusercontent.com/yguel/docker_mujoco_rl_101/main/start.sh<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>start.sh
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Astuce</p>
+<p>Ce script remplace celui que vous utilisiez jusqu’ici.</p>
+</div>
+</section>
+</section>
+<section id="lancement">
+<h2>Lancement<a class="headerlink" href="#lancement" title="Lien vers cette rubrique"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/rl/mujoco<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>./start.sh
+</pre></div>
+</div>
+<p>Le script vérifie l’image, la met à jour si besoin, puis démarre l’environnement. Au bout
+d’une trentaine de secondes, il affiche :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>🌈 Rainbow notebooks ready: http://localhost:2718
+   (9 chapters, from DQN to Rainbow)
+</pre></div>
+</div>
+<p>Vous avez alors trois accès, <strong>dans votre propre navigateur</strong> :</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Adresse</p></th>
+<th class="head"><p>Contenu</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="http://localhost:2718">http://localhost:2718</a></p></td>
+<td><p><strong>Les 9 chapitres du TP</strong> (serveur marimo)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="http://localhost:6080">http://localhost:6080</a></p></td>
+<td><p>Le bureau Ubuntu complet (VS Code, terminal, MuJoCo)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="http://localhost:8888">http://localhost:8888</a></p></td>
+<td><p>Jupyter, pour les notebooks des séances précédentes</p></td>
+</tr>
+</tbody>
+</table>
+<p>Pour ce TP, travaillez sur <a class="reference external" href="http://localhost:2718">http://localhost:2718</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Depuis le bureau (<a class="reference external" href="http://localhost:6080">http://localhost:6080</a>) vous retrouvez aussi une icône
+<strong>Rainbow Notebooks</strong> et la commande <code class="docutils literal notranslate"><span class="pre">start-rainbow.sh</span></code> dans un terminal. C’est le
+même serveur : utilisez ce qui vous arrange.</p>
+</div>
+<p>Quand vous avez fini votre session de travail, fermez le docker proprement avec <code class="docutils literal notranslate"><span class="pre">CTRL+C</span></code>
+dans le terminal où le script a été lancé.</p>
+<section id="vos-fichiers">
+<h3>Vos fichiers<a class="headerlink" href="#vos-fichiers" title="Lien vers cette rubrique"></a></h3>
+<p>Au premier lancement, les neuf chapitres sont recopiés dans
+<code class="docutils literal notranslate"><span class="pre">~/workspace/rainbow-is-all-you-need/</span></code> (côté conteneur), c’est-à-dire dans votre workspace
+persistant. C’est <strong>cette</strong> copie que vous modifiez et elle survit à l’arrêt du docker.</p>
+<p>L’original reste intact dans <code class="docutils literal notranslate"><span class="pre">/opt/rainbow-is-all-you-need/</span></code>. Si vous cassez un notebook :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>/opt/rainbow-is-all-you-need/01_dqn.py<span class="w"> </span>~/workspace/rainbow-is-all-you-need/
+</pre></div>
+</div>
+</section>
+</section>
+<section id="les-9-chapitres">
+<h2>Les 9 chapitres<a class="headerlink" href="#les-9-chapitres" title="Lien vers cette rubrique"></a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8.0%" />
+<col style="width: 32.0%" />
+<col style="width: 44.0%" />
+<col style="width: 16.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>#</p></th>
+<th class="head"><p>Fichier</p></th>
+<th class="head"><p>Brique ajoutée</p></th>
+<th class="head"><p>Durée</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>01</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">01_dqn.py</span></code></p></td>
+<td><p>DQN : mémoire de rejeu + réseau cible</p></td>
+<td><p>25 s</p></td>
+</tr>
+<tr class="row-odd"><td><p>02</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">02_double_q.py</span></code></p></td>
+<td><p>Double DQN : découple sélection et évaluation</p></td>
+<td><p>26 s</p></td>
+</tr>
+<tr class="row-even"><td><p>03</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">03_per.py</span></code></p></td>
+<td><p>Prioritized Experience Replay</p></td>
+<td><p>1 min 06</p></td>
+</tr>
+<tr class="row-odd"><td><p>04</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">04_dueling.py</span></code></p></td>
+<td><p>Dueling Network : sépare <span class="math notranslate nohighlight">\(V(s)\)</span> et <span class="math notranslate nohighlight">\(A(s,a)\)</span></p></td>
+<td><p>36 s</p></td>
+</tr>
+<tr class="row-even"><td><p>05</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">05_noisy_net.py</span></code></p></td>
+<td><p>NoisyNet : exploration apprise, remplace <span class="math notranslate nohighlight">\(\varepsilon\)</span>-greedy</p></td>
+<td><p>33 s</p></td>
+</tr>
+<tr class="row-odd"><td><p>06</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">06_categorical_dqn.py</span></code></p></td>
+<td><p>C51 : on apprend la <strong>distribution</strong> du retour</p></td>
+<td><p>33 s</p></td>
+</tr>
+<tr class="row-even"><td><p>07</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">07_n_step_learning.py</span></code></p></td>
+<td><p>Retours à <span class="math notranslate nohighlight">\(n\)</span> pas</p></td>
+<td><p>31 s</p></td>
+</tr>
+<tr class="row-odd"><td><p>08</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">08_rainbow.py</span></code></p></td>
+<td><p><strong>Rainbow</strong> : les six briques combinées</p></td>
+<td><p>1 min 47</p></td>
+</tr>
+<tr class="row-even"><td><p>09</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">09_rainbow_iqn.py</span></code></p></td>
+<td><p>Rainbow + Implicit Quantile Networks</p></td>
+<td><p>3 min 20</p></td>
+</tr>
+</tbody>
+</table>
+<p>Durées mesurées dans le conteneur du cours, sur 4 cœurs CPU et sans carte graphique :
+<strong>environ 9 min 30 de calcul pour les neuf chapitres</strong>.</p>
+</section>
+<section id="deroule-de-la-seance">
+<h2>Déroulé de la séance<a class="headerlink" href="#deroule-de-la-seance" title="Lien vers cette rubrique"></a></h2>
+<p>Vous n’aurez <strong>pas</strong> le temps de traiter les neuf chapitres en profondeur en 1 h 15. Le but
+est de maîtriser le squelette (ch. 01), de comprendre comment on y greffe une amélioration
+(ch. 02), puis de voir ce que donne l’assemblage complet (ch. 08). Les autres chapitres sont
+à faire chez vous.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Temps</p></th>
+<th class="head"><p>Activité</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0 – 5 min</p></td>
+<td><p>Lancement de <code class="docutils literal notranslate"><span class="pre">./start.sh</span></code>, ouverture de <a class="reference external" href="http://localhost:2718">http://localhost:2718</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>5 – 10 min</p></td>
+<td><p><strong>Lancez tout de suite le calcul de fond</strong> (voir ci-dessous).</p></td>
+</tr>
+<tr class="row-even"><td><p>10 – 30 min</p></td>
+<td><p><strong>Chapitre 01 — DQN.</strong> Lisez, exécutez, regardez la vidéo. Questions Q1 à Q3.</p></td>
+</tr>
+<tr class="row-odd"><td><p>30 – 45 min</p></td>
+<td><p><strong>Chapitre 02 — Double DQN.</strong> Comparez le code avec celui du 01. Questions Q4 et Q5.</p></td>
+</tr>
+<tr class="row-even"><td><p>45 – 65 min</p></td>
+<td><p><strong>Chapitre 08 — Rainbow.</strong> Lancez l’entraînement dès l’ouverture, lisez pendant qu’il tourne. Questions Q6 et Q7.</p></td>
+</tr>
+<tr class="row-odd"><td><p>65 – 75 min</p></td>
+<td><p>Comparaison des neuf courbes produites par le calcul de fond. Question Q8.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="le-calcul-de-fond">
+<h3>Le calcul de fond<a class="headerlink" href="#le-calcul-de-fond" title="Lien vers cette rubrique"></a></h3>
+<p>Dès le début de la séance, ouvrez un terminal sur le bureau (<a class="reference external" href="http://localhost:6080">http://localhost:6080</a>) et
+lancez :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/workspace/rainbow-is-all-you-need
+<span class="k">for</span><span class="w"> </span>f<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">0</span>*.py<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"=== </span><span class="nv">$f</span><span class="s2"> ==="</span><span class="p">;</span><span class="w"> </span>python3<span class="w"> </span><span class="s2">"</span><span class="nv">$f</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span><span class="k">done</span>
+</pre></div>
+</div>
+<p>Les notebooks marimo étant de simples fichiers <code class="docutils literal notranslate"><span class="pre">.py</span></code>, ils s’exécutent directement. En une
+dizaine de minutes vous obtiendrez les vidéos et les courbes des neuf agents dans
+<code class="docutils literal notranslate"><span class="pre">videos/</span></code>, que vous pourrez comparer en fin de séance sans rien attendre.</p>
+</section>
+</section>
+<section id="questions-a-rendre">
+<h2>Questions à rendre<a class="headerlink" href="#questions-a-rendre" title="Lien vers cette rubrique"></a></h2>
+<p>Déposez sur Moodle un fichier texte ou PDF avec vos réponses, quelques lignes chacune.</p>
+<section id="chapitre-01-dqn">
+<h3>Chapitre 01 — DQN<a class="headerlink" href="#chapitre-01-dqn" title="Lien vers cette rubrique"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Q1.</strong> Dans la classe <code class="docutils literal notranslate"><span class="pre">DQNAgent</span></code>, deux réseaux coexistent : <code class="docutils literal notranslate"><span class="pre">dqn</span></code> et <code class="docutils literal notranslate"><span class="pre">dqn_target</span></code>.
+Repérez où <code class="docutils literal notranslate"><span class="pre">dqn_target</span></code> est mis à jour. Que se passerait-il si on le mettait à jour à
+chaque pas plutôt que tous les <code class="docutils literal notranslate"><span class="pre">target_update</span></code> pas ?</p></li>
+<li><p><strong>Q2.</strong> <code class="docutils literal notranslate"><span class="pre">epsilon_decay</span> <span class="pre">=</span> <span class="pre">1</span> <span class="pre">/</span> <span class="pre">2000</span></code> avec <code class="docutils literal notranslate"><span class="pre">num_frames</span> <span class="pre">=</span> <span class="pre">20000</span></code>. À partir de quel pas
+l’agent est-il essentiellement glouton ? Que voyez-vous sur la courbe à ce moment-là ?</p></li>
+<li><p><strong>Q3.</strong> Le score maximal atteignable est 200 (<code class="docutils literal notranslate"><span class="pre">max_episode_steps=200</span></code>). Votre agent
+l’atteint-il ? Est-il <em>stable</em> à 200 ou retombe-t-il ?</p></li>
+</ol>
+</section>
+<section id="chapitre-02-double-dqn">
+<h3>Chapitre 02 — Double DQN<a class="headerlink" href="#chapitre-02-double-dqn" title="Lien vers cette rubrique"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Q4.</strong> Comparez la méthode <code class="docutils literal notranslate"><span class="pre">_compute_dqn_loss</span></code> des chapitres 01 et 02. Écrivez les
+deux formules de la cible. En quoi la seconde corrige-t-elle le biais d’optimisme ?</p></li>
+<li><p><strong>Q5.</strong> Sur CartPole, l’écart entre DQN et Double DQN est faible. Pourquoi ? Dans quel
+type d’environnement l’écart deviendrait-il important ?</p></li>
+</ol>
+</section>
+<section id="chapitre-08-rainbow">
+<h3>Chapitre 08 — Rainbow<a class="headerlink" href="#chapitre-08-rainbow" title="Lien vers cette rubrique"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Q6.</strong> Rainbow combine six améliorations. Lesquelles reconnaissez-vous dans le code ?
+Citez pour chacune la classe ou la ligne qui l’implémente.</p></li>
+<li><p><strong>Q7.</strong> NoisyNet remplace l’exploration <span class="math notranslate nohighlight">\(\varepsilon\)</span>-greedy. Trouvez dans le code
+du chapitre 08 la preuve que <code class="docutils literal notranslate"><span class="pre">epsilon</span></code> a bien disparu de la boucle de décision.</p></li>
+</ol>
+</section>
+<section id="synthese">
+<h3>Synthèse<a class="headerlink" href="#synthese" title="Lien vers cette rubrique"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Q8.</strong> À partir des courbes des neuf chapitres, classez les améliorations de la plus
+utile à la moins utile <strong>sur CartPole</strong>. Cette conclusion est-elle transposable aux jeux
+Atari du papier Rainbow ? Justifiez en une ou deux phrases.</p></li>
+</ol>
+</section>
+</section>
+<section id="pour-aller-plus-loin">
+<h2>Pour aller plus loin<a class="headerlink" href="#pour-aller-plus-loin" title="Lien vers cette rubrique"></a></h2>
+<ul class="simple">
+<li><p>Les chapitres 03 à 07, un par un : chacun isole une seule brique de Rainbow.</p></li>
+<li><p>Le chapitre 09 : Rainbow + IQN, la version distributionnelle la plus aboutie.</p></li>
+<li><p>Faites varier <code class="docutils literal notranslate"><span class="pre">num_frames</span></code>, <code class="docutils literal notranslate"><span class="pre">memory_size</span></code> et <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> dans le chapitre 01 et
+observez l’effet sur la courbe d’apprentissage.</p></li>
+</ul>
+</section>
+<section id="depannage">
+<h2>Dépannage<a class="headerlink" href="#depannage" title="Lien vers cette rubrique"></a></h2>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text"><a class="reference external" href="http://localhost:2718">http://localhost:2718</a> ne répond pas</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Le serveur met quelques secondes à démarrer : attendez l’affichage de
+<code class="docutils literal notranslate"><span class="pre">🌈</span> <span class="pre">Rainbow</span> <span class="pre">notebooks</span> <span class="pre">ready</span></code> dans le terminal, puis rechargez la page.</p>
+<p class="sd-card-text">S’il ne vient pas, ouvrez un terminal sur le bureau (<a class="reference external" href="http://localhost:6080">http://localhost:6080</a>) et lancez
+<code class="docutils literal notranslate"><span class="pre">start-rainbow.sh</span></code> : vous verrez le message d’erreur. Le journal est dans
+<code class="docutils literal notranslate"><span class="pre">~/marimo.log</span></code>.</p>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">« Rainbow notebooks are not available in this image »</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Votre image docker est antérieure au tutoriel. Faites <code class="docutils literal notranslate"><span class="pre">CTRL+C</span></code> puis relancez
+<code class="docutils literal notranslate"><span class="pre">./start.sh</span></code> : il téléchargera la mise à jour (environ 60 Mo).</p>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">« workspace is not writable »</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Vos notebooks sont alors dans <code class="docutils literal notranslate"><span class="pre">~/rainbow-is-all-you-need</span></code> et <strong>seront perdus</strong> à
+l’arrêt du conteneur. Prévenez l’enseignant et sauvegardez vos réponses ailleurs
+en attendant.</p>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Une fenêtre « Ubuntu Upgrade Available » apparaît sur le bureau</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Fermez-la, elle est sans effet sur le TP.</p>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">J’ai cassé un notebook</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>/opt/rainbow-is-all-you-need/01_dqn.py<span class="w"> </span>~/workspace/rainbow-is-all-you-need/
+</pre></div>
+</div>
+</div>
+</details></section>
+<section id="references">
+<h2>Références<a class="headerlink" href="#references" title="Lien vers cette rubrique"></a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf">V. Mnih et al., « Human-level control through deep reinforcement learning », Nature, 2015</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1509.06461.pdf">H. van Hasselt et al., « Deep Reinforcement Learning with Double Q-learning », 2015</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1511.05952.pdf">T. Schaul et al., « Prioritized Experience Replay », 2015</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1511.06581.pdf">Z. Wang et al., « Dueling Network Architectures for Deep Reinforcement Learning », 2015</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1706.10295.pdf">M. Fortunato et al., « Noisy Networks for Exploration », 2017</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1707.06887.pdf">M. G. Bellemare et al., « A Distributional Perspective on Reinforcement Learning », 2017</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1710.02298.pdf">M. Hessel et al., « Rainbow: Combining Improvements in Deep Reinforcement Learning », 2017</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1806.06923.pdf">W. Dabney et al., « Implicit Quantile Networks for Distributional Reinforcement Learning », 2018</a></p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="l03s00_index.html" class="btn btn-neutral float-left" title="Tutoriel Deep Q-Learning" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="../l02_ppo_in_practice/l02s00_index.html" class="btn btn-neutral float-right" title="Projet: mise en pratique de PPO" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Manuel YGUEL.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
