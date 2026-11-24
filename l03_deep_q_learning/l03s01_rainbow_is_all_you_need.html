@@ -155,11 +155,24 @@ l’entraînement</strong>. Réfléchissez à votre modification avant de la lan
 </pre></div>
 </div>
 <p>Le script vérifie l’image, la met à jour si besoin, puis démarre l’environnement. Au bout
-d’une trentaine de secondes, il affiche :</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>🌈 Rainbow notebooks ready: http://localhost:2718
-   (9 chapters, from DQN to Rainbow)
+d’une trentaine de secondes, il affiche le récapitulatif des services. Les trois doivent
+être marqués ok (✅) comme ci-dessous :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Checking services status...
+✅ VNC server is running
+✅ noVNC is running
+✅ Jupyter notebook is running
+✅ marimo (Rainbow notebooks) is running
+================================
+MuJoCo Desktop Environment Ready!
+================================
+Access via:
+  Desktop: http://localhost:6080
+  Jupyter: http://localhost:8888
+  Rainbow notebooks (marimo): http://localhost:2718
 </pre></div>
 </div>
+<p>Si la ligne <code class="docutils literal notranslate"><span class="pre">marimo</span></code> porte un <code class="docutils literal notranslate"><span class="pre">❌</span></code> ou un <code class="docutils literal notranslate"><span class="pre">⚠️</span></code>, reportez-vous au dépannage en fin de
+page avant d’aller plus loin.</p>
 <p>Vous avez alors trois accès, <strong>dans votre propre navigateur</strong> :</p>
 <table class="docutils align-default">
 <colgroup>
@@ -197,9 +210,14 @@ dans le terminal où le script a été lancé.</p>
 <p>Au premier lancement, les neuf chapitres sont recopiés dans
 <code class="docutils literal notranslate"><span class="pre">~/workspace/rainbow-is-all-you-need/</span></code> (côté conteneur), c’est-à-dire dans votre workspace
 persistant. C’est <strong>cette</strong> copie que vous modifiez et elle survit à l’arrêt du docker.</p>
-<p>L’original reste intact dans <code class="docutils literal notranslate"><span class="pre">/opt/rainbow-is-all-you-need/</span></code>. Si vous cassez un notebook :</p>
+<p>L’original reste intact dans <code class="docutils literal notranslate"><span class="pre">/opt/rainbow-is-all-you-need/</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Si vous cassez un notebook</p>
+<p>Vous pouvez à tout moment récupérer l’original, par exemple pour <code class="docutils literal notranslate"><span class="pre">01_dqn.py</span></code> se situant dans <code class="docutils literal notranslate"><span class="pre">/opt</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>/opt/rainbow-is-all-you-need/01_dqn.py<span class="w"> </span>~/workspace/rainbow-is-all-you-need/
 </pre></div>
+</div>
 </div>
 </section>
 </section>
@@ -376,15 +394,18 @@ observez l’effet sur la courbe d’apprentissage.</p></li>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text"><a class="reference external" href="http://localhost:2718">http://localhost:2718</a> ne répond pas</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Le serveur met quelques secondes à démarrer : attendez l’affichage de
-<code class="docutils literal notranslate"><span class="pre">🌈</span> <span class="pre">Rainbow</span> <span class="pre">notebooks</span> <span class="pre">ready</span></code> dans le terminal, puis rechargez la page.</p>
-<p class="sd-card-text">S’il ne vient pas, ouvrez un terminal sur le bureau (<a class="reference external" href="http://localhost:6080">http://localhost:6080</a>) et lancez
-<code class="docutils literal notranslate"><span class="pre">start-rainbow.sh</span></code> : vous verrez le message d’erreur. Le journal est dans
-<code class="docutils literal notranslate"><span class="pre">~/marimo.log</span></code>.</p>
+<p class="sd-card-text">Vérifiez d’abord la ligne <code class="docutils literal notranslate"><span class="pre">marimo</span> <span class="pre">(Rainbow</span> <span class="pre">notebooks)</span></code> dans le récapitulatif affiché
+au démarrage.</p>
+<ul class="simple">
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">⚠️</span></code> : le serveur démarre encore, attendez dix secondes et rechargez la page.</p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">❌</span></code> : il n’a pas démarré. Ouvrez un terminal sur le bureau
+(<a class="reference external" href="http://localhost:6080">http://localhost:6080</a>) et lancez <code class="docutils literal notranslate"><span class="pre">start-rainbow.sh</span></code> pour voir l’erreur. Le journal
+est dans <code class="docutils literal notranslate"><span class="pre">~/marimo.log</span></code>.</p></li>
+</ul>
 </div>
 </details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">« Rainbow notebooks are not available in this image »</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<span class="sd-summary-text">La ligne « marimo (Rainbow notebooks) » n’apparaît pas du tout</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">Votre image docker est antérieure au tutoriel. Faites <code class="docutils literal notranslate"><span class="pre">CTRL+C</span></code> puis relancez
 <code class="docutils literal notranslate"><span class="pre">./start.sh</span></code> : il téléchargera la mise à jour (environ 60 Mo).</p>
 </div>

@@ -46,12 +46,26 @@ Lancement
    cd ~/rl/mujoco && ./start.sh
 
 Le script vérifie l'image, la met à jour si besoin, puis démarre l'environnement. Au bout
-d'une trentaine de secondes, il affiche :
+d'une trentaine de secondes, il affiche le récapitulatif des services. Les trois doivent
+être marqués ok (✅) comme ci-dessous :
 
 .. code-block:: text
 
-   🌈 Rainbow notebooks ready: http://localhost:2718
-      (9 chapters, from DQN to Rainbow)
+   Checking services status...
+   ✅ VNC server is running
+   ✅ noVNC is running
+   ✅ Jupyter notebook is running
+   ✅ marimo (Rainbow notebooks) is running
+   ================================
+   MuJoCo Desktop Environment Ready!
+   ================================
+   Access via:
+     Desktop: http://localhost:6080
+     Jupyter: http://localhost:8888
+     Rainbow notebooks (marimo): http://localhost:2718
+
+Si la ligne ``marimo`` porte un ``❌`` ou un ``⚠️``, reportez-vous au dépannage en fin de
+page avant d'aller plus loin.
 
 Vous avez alors trois accès, **dans votre propre navigateur** :
 
@@ -86,11 +100,16 @@ Au premier lancement, les neuf chapitres sont recopiés dans
 ``~/workspace/rainbow-is-all-you-need/`` (côté conteneur), c'est-à-dire dans votre workspace
 persistant. C'est **cette** copie que vous modifiez et elle survit à l'arrêt du docker.
 
-L'original reste intact dans ``/opt/rainbow-is-all-you-need/``. Si vous cassez un notebook :
 
-.. code-block:: bash
+L'original reste intact dans ``/opt/rainbow-is-all-you-need/``. 
 
-   cp /opt/rainbow-is-all-you-need/01_dqn.py ~/workspace/rainbow-is-all-you-need/
+.. note:: Si vous cassez un notebook
+
+  Vous pouvez à tout moment récupérer l'original, par exemple pour ``01_dqn.py`` se situant dans ``/opt``:
+
+  .. code-block:: bash
+
+    cp /opt/rainbow-is-all-you-need/01_dqn.py ~/workspace/rainbow-is-all-you-need/
 
 ================
 Les 9 chapitres
@@ -242,14 +261,15 @@ Dépannage
 
 .. dropdown:: http://localhost:2718 ne répond pas
 
-   Le serveur met quelques secondes à démarrer : attendez l'affichage de
-   ``🌈 Rainbow notebooks ready`` dans le terminal, puis rechargez la page.
+   Vérifiez d'abord la ligne ``marimo (Rainbow notebooks)`` dans le récapitulatif affiché
+   au démarrage.
 
-   S'il ne vient pas, ouvrez un terminal sur le bureau (http://localhost:6080) et lancez
-   ``start-rainbow.sh`` : vous verrez le message d'erreur. Le journal est dans
-   ``~/marimo.log``.
+   * ``⚠️`` : le serveur démarre encore, attendez dix secondes et rechargez la page.
+   * ``❌`` : il n'a pas démarré. Ouvrez un terminal sur le bureau
+     (http://localhost:6080) et lancez ``start-rainbow.sh`` pour voir l'erreur. Le journal
+     est dans ``~/marimo.log``.
 
-.. dropdown:: « Rainbow notebooks are not available in this image »
+.. dropdown:: La ligne « marimo (Rainbow notebooks) » n'apparaît pas du tout
 
    Votre image docker est antérieure au tutoriel. Faites ``CTRL+C`` puis relancez
    ``./start.sh`` : il téléchargera la mise à jour (environ 60 Mo).
